@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="6900" height="3700" viewBox="0 0 6900 3700">
+  <defs>
+    <marker id="arrow1" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L18,9 L0,18 Z" fill="#27323a"/>
+    </marker>
+    <style>
+      .title { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:64px; font-weight:600; fill:#18232b; text-anchor:middle; dominant-baseline:middle; }
+      .entity { fill:#fff; stroke:#33414a; stroke-width:4; }
+      .process { fill:#f6f8f9; stroke:#27323a; stroke-width:5; }
+      .store { fill:none; stroke:#27323a; stroke-width:5; stroke-linecap:square; }
+      .node-text { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:44px; font-weight:500; fill:#18232b; text-anchor:middle; dominant-baseline:middle; }
+      .process-id { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:44px; font-weight:600; fill:#18232b; text-anchor:middle; dominant-baseline:middle; }
+      .process-name { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:42px; font-weight:500; fill:#18232b; text-anchor:middle; dominant-baseline:middle; }
+      .store-text { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:38px; font-weight:500; fill:#18232b; text-anchor:middle; dominant-baseline:middle; }
+      .store-sub { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:27px; font-weight:400; fill:#46545e; text-anchor:middle; dominant-baseline:middle; }
+      .flow { fill:none; stroke:#27323a; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; marker-end:url(#arrow1); }
+      .bridge-under { fill:none; stroke:#fff; stroke-width:14; stroke-linecap:round; stroke-linejoin:round; }
+      .flow-label { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:38px; font-weight:400; fill:#18232b; text-anchor:middle; dominant-baseline:middle; paint-order:stroke fill; stroke:#fff; stroke-width:14; stroke-linejoin:round; }
+      .flow-label.small { font-size:34px; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="6900" height="3700" fill="#fff"/>
+  <text class="title" x="3450" y="76">校园报修工单管理系统1层数据流图</text>
+
+  <!-- 所有数据流均保留原名称、方向、来源和目标；仅调整路径 -->
+  <path id="f01" class="flow" data-source="E1" data-target="1.0" data-name="报修申请信息" d="M300 1750 V345 H486"/>
+  <path id="f02" class="flow" data-source="1.0" data-target="E1" data-name="提交结果" d="M500 420 H450 V1736"/>
+  <path id="f03" class="flow" data-source="1.0" data-target="D1" data-name="新建工单信息" d="M1150 350 H1300 V790 H1386"/>
+
+  <path id="f04" class="flow" data-source="D1" data-target="2.0" data-name="待审核工单信息" d="M2100 740 H2250 V345 H2486"/>
+  <path id="f05" class="flow" data-source="E2" data-target="2.0" data-name="审核处理信息" d="M3500 310 H3214"/>
+  <path id="f06" class="flow" data-source="E2" data-target="2.0" data-name="派单操作信息" d="M3500 380 H3214"/>
+  <path id="f07" class="flow" data-source="2.0" data-target="D1" data-name="工单状态及派单信息" d="M2500 420 H2200 V820 H2114"/>
+  <path id="f08" class="flow" data-source="2.0" data-target="E2" data-name="待审核工单信息" d="M3200 420 H3350 V460 H3486"/>
+  <path id="f09" class="flow" data-source="2.0" data-target="E3" data-name="维修任务信息" d="M3000 440 V760 H4800 V1086"/>
+
+  <path id="f10" class="flow" data-source="D1" data-target="3.0" data-name="工单故障信息" d="M2100 780 H2250 V1090 H2486"/>
+  <path id="f11" class="flow" data-source="3.0" data-target="D1" data-name="工单状态更新" d="M2500 1160 H2200 V840 H2114"/>
+  <path id="f12" class="flow" data-source="E3" data-target="3.0" data-name="维修处理信息" d="M4700 1250 H4500 V820 H3300 V1120 H3214"/>
+  <path id="f13" class="flow" data-source="3.0" data-target="D2" data-name="维修处理记录" d="M2850 1190 V1400 H2650 V1536"/>
+
+  <path id="f14" class="flow" data-source="E1" data-target="4.0" data-name="验收与返修信息" d="M550 1800 H1186"/>
+  <path id="f15" class="flow" data-source="E1" data-target="4.0" data-name="评价信息" d="M550 1870 H1186"/>
+  <path id="f16" class="flow" data-source="4.0" data-target="E1" data-name="维修结果信息" d="M1200 1940 H564"/>
+  <path id="f17" class="flow" data-source="D1" data-target="4.0" data-name="待验收工单信息" d="M1600 880 V1736"/>
+  <path id="f18" class="flow" data-source="4.0" data-target="D1" data-name="工单状态更新" d="M1800 1750 V894"/>
+  <path id="f19" class="flow" data-source="D2" data-target="4.0" data-name="维修结果信息" d="M2300 1600 H2100 V1820 H1964"/>
+  <path id="f20" class="flow" data-source="4.0" data-target="D2" data-name="验收、返修及评价记录" d="M1950 1900 H2150 V1680 H2286"/>
+  <path id="f21" class="flow" data-source="4.0" data-target="E3" data-name="返修任务信息" d="M1850 1940 V3200 H5200 V1514"/>
+
+  <path id="f22" class="flow" data-source="E1" data-target="5.0" data-name="查询请求" d="M350 2030 V2550 H1186"/>
+  <path id="f23" class="flow" data-source="E2" data-target="5.0" data-name="统计查询请求" d="M3700 700 V850 H4250 V2850 H1600 V2654"/>
+  <path class="bridge-under" d="M2100 720 H2200 V2520 H1964"/>
+  <path id="f24" class="flow" data-source="D1" data-target="5.0" data-name="工单数据" d="M2100 720 H2200 V2520 H1964"/>
+  <path class="bridge-under" d="M2850 1730 V2300 H1700 V2436"/>
+  <path id="f25" class="flow" data-source="D2" data-target="5.0" data-name="维修验收数据" d="M2850 1730 V2300 H1700 V2436"/>
+  <path id="f26" class="flow" data-source="5.0" data-target="E1" data-name="工单进度信息" d="M1200 2580 H700 V1960 H564"/>
+  <path class="bridge-under" d="M1950 2570 H4150 V950 H3900 V714"/>
+  <path id="f27" class="flow" data-source="5.0" data-target="E2" data-name="统计结果信息" d="M1950 2570 H4150 V950 H3900 V714"/>
+
+  <path id="f28" class="flow" data-source="E1" data-target="6.0" data-name="登录信息" d="M350 2030 V3400 H4600 V800 H4850 V714"/>
+  <path id="f29" class="flow" data-source="6.0" data-target="E1" data-name="登录结果" d="M5550 680 H5800 V3500 H350 V2044"/>
+  <path id="f30" class="flow" data-source="E2" data-target="6.0" data-name="登录信息" d="M4100 300 H4686"/>
+  <path id="f31" class="flow" data-source="6.0" data-target="E2" data-name="登录结果" d="M4700 520 H4114"/>
+  <path id="f32" class="flow" data-source="E3" data-target="6.0" data-name="登录信息" d="M5100 1100 V714"/>
+  <path id="f33" class="flow" data-source="6.0" data-target="E3" data-name="登录结果" d="M5400 700 V1086"/>
+  <path id="f34" class="flow" data-source="E2" data-target="6.0" data-name="用户与维修人员管理信息" d="M4100 400 H4686"/>
+  <path id="f35" class="flow" data-source="6.0" data-target="E2" data-name="用户与维修人员信息" d="M4700 620 H4114"/>
+  <path id="f36" class="flow" data-source="D3" data-target="6.0" data-name="用户账号与角色信息" d="M6150 700 V820 H5450 V714"/>
+  <path id="f37" class="flow" data-source="6.0" data-target="D3" data-name="用户账号及状态更新" d="M5350 250 V170 H6350 V236"/>
+
+  <!-- 外部实体：恰好三个 -->
+  <rect class="entity" x="150" y="1750" width="400" height="280"/>
+  <text class="node-text" x="350" y="1890">E1 报修人</text>
+  <rect class="entity" x="3500" y="250" width="600" height="450"/>
+  <text class="node-text" x="3800" y="475">E2 管理员</text>
+  <rect class="entity" x="4700" y="1100" width="850" height="400"/>
+  <text class="node-text" x="5125" y="1300">E3 维修人员</text>
+
+  <!-- 六个加工 -->
+  <rect class="process" x="500" y="250" width="650" height="190" rx="82" ry="82"/>
+  <text class="process-id" x="825" y="310">1.0</text>
+  <text class="process-name" x="825" y="375">报修申请处理</text>
+  <rect class="process" x="2500" y="250" width="700" height="190" rx="82" ry="82"/>
+  <text class="process-id" x="2850" y="310">2.0</text>
+  <text class="process-name" x="2850" y="375">审核与派单处理</text>
+  <rect class="process" x="2500" y="1000" width="700" height="190" rx="82" ry="82"/>
+  <text class="process-id" x="2850" y="1060">3.0</text>
+  <text class="process-name" x="2850" y="1125">维修处理</text>
+  <rect class="process" x="1200" y="1750" width="750" height="190" rx="82" ry="82"/>
+  <text class="process-id" x="1575" y="1810">4.0</text>
+  <text class="process-name" x="1575" y="1875">验收返修与评价处理</text>
+  <rect class="process" x="1200" y="2450" width="750" height="190" rx="82" ry="82"/>
+  <text class="process-id" x="1575" y="2510">5.0</text>
+  <text class="process-name" x="1575" y="2575">查询与统计处理</text>
+  <rect class="process" x="4700" y="250" width="850" height="450" rx="100" ry="100"/>
+  <text class="process-id" x="5125" y="420">6.0</text>
+  <text class="process-name" x="5125" y="510">用户与权限管理</text>
+
+  <!-- 三个双横线式 DFD 数据存储 -->
+  <path class="store" d="M1400 700 H2100 M1400 880 H2100"/>
+  <text class="store-text" x="1750" y="760">D1 报修工单数据</text>
+  <text class="store-sub" x="1750" y="820">对应 DS01</text>
+  <path class="store" d="M2300 1550 H3000 M2300 1730 H3000"/>
+  <text class="store-text" x="2650" y="1610">D2 维修与验收记录</text>
+  <text class="store-sub" x="2650" y="1670">对应 DS02</text>
+  <path class="store" d="M5950 250 H6750 M5950 700 H6750"/>
+  <text class="store-text" x="6350" y="425">D3 用户与权限数据</text>
+  <text class="store-sub" x="6350" y="490">对应 DS03</text>
+
+  <!-- 数据流名称 -->
+  <text class="flow-label" data-flow="f01" x="390" y="330">报修申请信息</text>
+  <text class="flow-label" data-flow="f02" x="520" y="980">提交结果</text>
+  <text class="flow-label" data-flow="f03" x="1260" y="600">新建工单信息</text>
+  <text class="flow-label" data-flow="f04" x="2240" y="600">待审核工单信息</text>
+  <text class="flow-label" data-flow="f05" x="3350" y="285">审核处理信息</text>
+  <text class="flow-label" data-flow="f06" x="3350" y="355">派单操作信息</text>
+  <text class="flow-label" data-flow="f07" x="2280" y="795">工单状态及派单信息</text>
+  <text class="flow-label" data-flow="f08" x="3360" y="435">待审核工单信息</text>
+  <text class="flow-label" data-flow="f09" x="3900" y="735">维修任务信息</text>
+  <text class="flow-label" data-flow="f10" x="2250" y="1015">工单故障信息</text>
+  <text class="flow-label" data-flow="f11" x="2240" y="890">工单状态更新</text>
+  <text class="flow-label" data-flow="f12" x="3950" y="795">维修处理信息</text>
+  <text class="flow-label" data-flow="f13" x="2750" y="1375">维修处理记录</text>
+  <text class="flow-label" data-flow="f14" x="860" y="1775">验收与返修信息</text>
+  <text class="flow-label" data-flow="f15" x="860" y="1845">评价信息</text>
+  <text class="flow-label" data-flow="f16" x="860" y="1915">维修结果信息</text>
+  <text class="flow-label" data-flow="f17" x="1510" y="1290">待验收工单信息</text>
+  <text class="flow-label" data-flow="f18" x="1890" y="1290">工单状态更新</text>
+  <text class="flow-label" data-flow="f19" x="2090" y="1575">维修结果信息</text>
+  <text class="flow-label" data-flow="f20" x="2160" y="1655">验收、返修及评价记录</text>
+  <text class="flow-label" data-flow="f21" x="3500" y="3175">返修任务信息</text>
+  <text class="flow-label" data-flow="f22" x="760" y="2525">查询请求</text>
+  <text class="flow-label" data-flow="f23" x="3000" y="2825">统计查询请求</text>
+  <text class="flow-label" data-flow="f24" x="2120" y="2230">工单数据</text>
+  <text class="flow-label" data-flow="f25" x="2700" y="2275">维修验收数据</text>
+  <text class="flow-label" data-flow="f26" x="820" y="2555">工单进度信息</text>
+  <text class="flow-label" data-flow="f27" x="3000" y="2545">统计结果信息</text>
+  <text class="flow-label" data-flow="f28" x="2500" y="3375">登录信息</text>
+  <text class="flow-label" data-flow="f29" x="2900" y="3475">登录结果</text>
+  <text class="flow-label small" data-flow="f30" x="4400" y="275">登录信息</text>
+  <text class="flow-label small" data-flow="f31" x="4400" y="495">登录结果</text>
+  <text class="flow-label small" data-flow="f32" x="4920" y="900">登录信息</text>
+  <text class="flow-label small" data-flow="f33" x="5570" y="900">登录结果</text>
+  <text class="flow-label small" data-flow="f34" x="4400" y="375">用户与维修人员管理信息</text>
+  <text class="flow-label small" data-flow="f35" x="4400" y="595">用户与维修人员信息</text>
+  <text class="flow-label small" data-flow="f36" x="5800" y="795">用户账号与角色信息</text>
+  <text class="flow-label small" data-flow="f37" x="5850" y="145">用户账号及状态更新</text>
+</svg>

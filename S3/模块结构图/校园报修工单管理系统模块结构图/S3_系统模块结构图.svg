@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="2000" viewBox="0 0 3200 2000">
+  <title>校园报修工单管理系统模块结构图</title>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .title { font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif; font-size: 48px; font-weight: 700; fill: #111827; }
+      .layer { font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif; font-size: 24px; font-weight: 600; fill: #6b7280; }
+      .module { fill: #ffffff; stroke: #1f2937; stroke-width: 3; }
+      .module-head { fill: #e8eef7; stroke: none; }
+      .module-id { font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif; font-size: 28px; font-weight: 700; fill: #163a63; }
+      .module-name { font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif; font-size: 28px; font-weight: 700; fill: #111827; }
+      .duty { font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif; font-size: 21px; fill: #374151; }
+      .edge { fill: none; stroke: #1f2937; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="3200" height="2000" fill="#ffffff"/>
+  <text x="1600" y="62" text-anchor="middle" class="title">校园报修工单管理系统模块结构图</text>
+
+  <text x="40" y="115" class="layer">接入层</text>
+  <text x="40" y="375" class="layer">业务模块</text>
+  <text x="40" y="785" class="layer">公共业务层</text>
+  <text x="40" y="1235" class="layer">基础设施 / 数据访问层</text>
+
+  <!-- Individual direct-call edges. Each path represents exactly one call. -->
+  <!-- M1 -> M2..M7 -->
+  <path class="edge" d="M1360 270 L300 390"/>
+  <path class="edge" d="M1450 270 L820 390"/>
+  <path class="edge" d="M1540 270 L1340 390"/>
+  <path class="edge" d="M1630 270 L1860 390"/>
+  <path class="edge" d="M1720 270 L2380 390"/>
+  <path class="edge" d="M1810 270 L2900 390"/>
+
+  <!-- M2 -> M11 -->
+  <path class="edge" d="M300 610 C260 820 1250 990 1980 1250"/>
+
+  <!-- M3..M6 -> M8 -->
+  <path class="edge" d="M820 610 L1020 710 L1375 800"/>
+  <path class="edge" d="M1340 610 L1340 800"/>
+  <path class="edge" d="M1860 610 L1660 710 L1525 800"/>
+  <path class="edge" d="M2380 610 L2110 710 L1585 800"/>
+
+  <!-- Business -> data/storage modules -->
+  <path class="edge" d="M700 610 C650 850 500 1030 405 1250"/>
+  <path class="edge" d="M950 610 C1050 830 2250 1010 2775 1250"/>
+  <path class="edge" d="M1200 610 C1170 850 700 1040 500 1250"/>
+  <path class="edge" d="M1450 610 C1500 840 1800 1030 1980 1250"/>
+  <path class="edge" d="M1700 610 C1700 850 900 1060 600 1250"/>
+  <path class="edge" d="M1750 610 C1780 850 1500 1040 1195 1250"/>
+  <path class="edge" d="M2200 610 C2200 850 1500 1050 650 1250"/>
+  <path class="edge" d="M2250 610 C2300 850 1800 1080 1195 1250"/>
+  <path class="edge" d="M2750 610 C2700 870 1250 1080 700 1250"/>
+  <path class="edge" d="M2920 610 C2900 850 1800 1080 1400 1250"/>
+
+  <!-- M8 -> M9 -->
+  <path class="edge" d="M1400 990 C1250 1100 700 1120 405 1250"/>
+
+  <!-- Module boxes: M1 -->
+  <g>
+    <rect class="module" x="1300" y="90" width="600" height="180" rx="2"/>
+    <rect class="module-head" x="1300" y="90" width="600" height="58"/>
+    <text class="module-id" x="1325" y="129">M1</text>
+    <text class="module-name" x="1395" y="129">Web接入模块</text>
+    <text class="duty" x="1325" y="182">接收前端请求、参数校验、</text>
+    <text class="duty" x="1325" y="214">调用业务模块并返回结果</text>
+  </g>
+
+  <!-- Layer 2 -->
+  <g>
+    <rect class="module" x="50" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="50" y="390" width="500" height="58"/>
+    <text class="module-id" x="72" y="429">M2</text><text class="module-name" x="140" y="429">用户与权限模块</text>
+    <text class="duty" x="72" y="485">登录认证、角色权限、</text><text class="duty" x="72" y="517">用户及维修人员管理</text>
+  </g>
+  <g>
+    <rect class="module" x="570" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="570" y="390" width="500" height="58"/>
+    <text class="module-id" x="592" y="429">M3</text><text class="module-name" x="660" y="429">报修申请模块</text>
+    <text class="duty" x="592" y="485">创建报修单、填写报修信息、</text><text class="duty" x="592" y="517">处理报修图片</text>
+  </g>
+  <g>
+    <rect class="module" x="1090" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="1090" y="390" width="500" height="58"/>
+    <text class="module-id" x="1112" y="429">M4</text><text class="module-name" x="1180" y="429">审核派单模块</text>
+    <text class="duty" x="1112" y="485">审核报修申请、选择维修人员、</text><text class="duty" x="1112" y="517">完成派单</text>
+  </g>
+  <g>
+    <rect class="module" x="1610" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="1610" y="390" width="500" height="58"/>
+    <text class="module-id" x="1632" y="429">M5</text><text class="module-name" x="1700" y="429">维修处理模块</text>
+    <text class="duty" x="1632" y="485">接单、维修处理、填写维修结果</text><text class="duty" x="1632" y="517">和未完成原因</text>
+  </g>
+  <g>
+    <rect class="module" x="2130" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="2130" y="390" width="500" height="58"/>
+    <text class="module-id" x="2152" y="429">M6</text><text class="module-name" x="2220" y="429">验收返修与评价模块</text>
+    <text class="duty" x="2152" y="485">验收、返修、维修评价</text>
+  </g>
+  <g>
+    <rect class="module" x="2650" y="390" width="500" height="220" rx="2"/>
+    <rect class="module-head" x="2650" y="390" width="500" height="58"/>
+    <text class="module-id" x="2672" y="429">M7</text><text class="module-name" x="2740" y="429">查询统计模块</text>
+    <text class="duty" x="2672" y="485">工单进度查询、后台统计</text>
+  </g>
+
+  <!-- Layer 3 -->
+  <g>
+    <rect class="module" x="1300" y="800" width="600" height="190" rx="2"/>
+    <rect class="module-head" x="1300" y="800" width="600" height="58"/>
+    <text class="module-id" x="1325" y="839">M8</text><text class="module-name" x="1395" y="839">工单状态流转模块</text>
+    <text class="duty" x="1325" y="895">统一处理工单状态变化</text>
+  </g>
+
+  <!-- Layer 4 -->
+  <g>
+    <rect class="module" x="80" y="1250" width="650" height="230" rx="2"/>
+    <rect class="module-head" x="80" y="1250" width="650" height="58"/>
+    <text class="module-id" x="105" y="1289">M9</text><text class="module-name" x="175" y="1289">工单数据访问模块</text>
+    <text class="duty" x="105" y="1345">读写工单、类型、地点、图片、</text><text class="duty" x="105" y="1377">派单及状态记录</text>
+  </g>
+  <g>
+    <rect class="module" x="870" y="1250" width="650" height="230" rx="2"/>
+    <rect class="module-head" x="870" y="1250" width="650" height="58"/>
+    <text class="module-id" x="895" y="1289">M10</text><text class="module-name" x="985" y="1289">维修验收数据访问模块</text>
+    <text class="duty" x="895" y="1345">读写维修、验收、评价记录</text>
+  </g>
+  <g>
+    <rect class="module" x="1660" y="1250" width="650" height="230" rx="2"/>
+    <rect class="module-head" x="1660" y="1250" width="650" height="58"/>
+    <text class="module-id" x="1685" y="1289">M11</text><text class="module-name" x="1775" y="1289">用户权限数据访问模块</text>
+    <text class="duty" x="1685" y="1345">读写用户、角色及权限数据</text>
+  </g>
+  <g>
+    <rect class="module" x="2450" y="1250" width="650" height="230" rx="2"/>
+    <rect class="module-head" x="2450" y="1250" width="650" height="58"/>
+    <text class="module-id" x="2475" y="1289">M12</text><text class="module-name" x="2565" y="1289">文件存储模块</text>
+    <text class="duty" x="2475" y="1345">保存、读取报修图片</text>
+  </g>
+
+  <text x="1600" y="1575" text-anchor="middle" class="layer">实线箭头表示调用者 → 被调用模块的直接调用关系</text>
+</svg>

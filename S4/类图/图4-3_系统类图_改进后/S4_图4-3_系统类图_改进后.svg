@@ -1,0 +1,421 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="6000" height="3600" viewBox="0 0 6000 3600"><rect width="100%" height="100%" fill="white"/><text x="3000" y="45" text-anchor="middle" font-family="Arial" font-size="28" font-weight="bold">校园报修工单管理系统 系统类图（改进后）</text>
+<rect x="50" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="500.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">controller</text>
+<rect x="1020" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="1470.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">service</text>
+<rect x="1990" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="2440.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">svcimpl</text>
+<rect x="2960" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="3410.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">repository</text>
+<rect x="3930" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="4380.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">domain</text>
+<rect x="4900" y="70" width="900" height="3500" fill="none" stroke="#94a3b8"/><text x="5350.0" y="95" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">infrastructure</text>
+<line x1="4355.0" y1="120" x2="4355.0" y2="339" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="120" x2="4355.0" y2="1238" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="120" x2="2415.0" y2="120" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="361" x2="2415.0" y2="471" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="580" x2="2415.0" y2="932" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="777" x2="2415.0" y2="1283" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="1193" x2="2415.0" y2="2029" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="1390" x2="2415.0" y2="2424" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="1565" x2="2415.0" y2="2687" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="1784" x2="2415.0" y2="3060" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="1018" x2="2415.0" y2="1744" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="1445.0" y1="2091" x2="2415.0" y2="3477" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="339" x2="4355.0" y2="975" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="690" x2="4355.0" y2="975" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="1589" x2="4355.0" y2="1238" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="1896" x2="4355.0" y2="1238" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="4355.0" y1="1238" x2="4355.0" y2="2225" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="120" x2="1445.0" y2="120" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="383" x2="1445.0" y2="361" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="646" x2="1445.0" y2="580" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="887" x2="1445.0" y2="777" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="1150" x2="1445.0" y2="1193" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="1150" x2="1445.0" y2="1018" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2029" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="1413" x2="1445.0" y2="1390" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="475.0" y1="1413" x2="1445.0" y2="1565" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="120" x2="3385.0" y2="120" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="120" x2="5325.0" y2="120" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="1445.0" y2="1784" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="1445.0" y2="2091" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="3385.0" y2="624" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="3385.0" y2="799" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="471" x2="3385.0" y2="974" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="932" x2="3385.0" y2="1171" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="932" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="932" x2="3385.0" y2="120" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="932" x2="1445.0" y2="1784" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="1283" x2="3385.0" y2="1390" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="1283" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="1283" x2="1445.0" y2="1784" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2029" x2="3385.0" y2="1609" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2029" x2="3385.0" y2="1390" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2029" x2="1445.0" y2="1784" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2424" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2687" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2687" x2="3385.0" y2="1390" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2687" x2="3385.0" y2="1609" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="2687" x2="3385.0" y2="1806" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="3060" x2="3385.0" y2="383" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="3060" x2="3385.0" y2="2003" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="120" x2="4355.0" y2="339" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="120" x2="4355.0" y2="690" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="120" x2="4355.0" y2="975" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="383" x2="4355.0" y2="1238" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="1171" x2="4355.0" y2="2510" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="1390" x2="4355.0" y2="2839" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="1609" x2="4355.0" y2="3212" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="1806" x2="4355.0" y2="3541" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="2003" x2="4355.0" y2="3848" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="624" x2="4355.0" y2="1589" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="799" x2="4355.0" y2="1896" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="3385.0" y1="974" x2="4355.0" y2="2225" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="1744" x2="3385.0" y2="1806" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<line x1="2415.0" y1="1744" x2="3385.0" y2="1609" stroke="#94a3b8" stroke-width="1" opacity=".5"/>
+<rect x="50" y="100" width="850" height="243" fill="white" stroke="#334155"/><text x="58" y="118" font-family="Arial" font-size="14" font-weight="bold">UserController</text>
+<text x="58" y="138" font-family="Arial" font-size="10">- userPermissionService: UserPermissionService</text>
+<text x="58" y="152" font-family="Arial" font-size="10">+ login(username: String, password: String): String</text>
+<text x="58" y="166" font-family="Arial" font-size="10">+ listUsers(roleCode: String, status: String): List&lt;SysUser&gt;</text>
+<text x="58" y="180" font-family="Arial" font-size="10">+ updateUserStatus(userId: Long, status: String): void</text>
+<text x="58" y="194" font-family="Arial" font-size="10">+ assignRole(userId: Long, roleId: Long): void</text>
+<rect x="50" y="363" width="850" height="243" fill="white" stroke="#334155"/><text x="58" y="381" font-family="Arial" font-size="14" font-weight="bold">RepairOrderController</text>
+<text x="58" y="401" font-family="Arial" font-size="10">- repairOrderService: RepairOrderService</text>
+<text x="58" y="415" font-family="Arial" font-size="10">+ createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List&lt;String&gt;): RepairOrder</text>
+<text x="58" y="429" font-family="Arial" font-size="10">+ updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder</text>
+<text x="58" y="443" font-family="Arial" font-size="10">+ getMyOrders(reporterId: Long): List&lt;RepairOrder&gt;</text>
+<text x="58" y="457" font-family="Arial" font-size="10">+ getProgress(reporterId: Long, orderId: Long): RepairOrder</text>
+<rect x="50" y="626" width="850" height="221" fill="white" stroke="#334155"/><text x="58" y="644" font-family="Arial" font-size="14" font-weight="bold">DispatchController</text>
+<text x="58" y="664" font-family="Arial" font-size="10">- dispatchService: DispatchService</text>
+<text x="58" y="678" font-family="Arial" font-size="10">+ auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void</text>
+<text x="58" y="692" font-family="Arial" font-size="10">+ dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord</text>
+<text x="58" y="706" font-family="Arial" font-size="10">+ listPendingOrders(): List&lt;RepairOrder&gt;</text>
+<rect x="50" y="867" width="850" height="243" fill="white" stroke="#334155"/><text x="58" y="885" font-family="Arial" font-size="14" font-weight="bold">MaintenanceController</text>
+<text x="58" y="905" font-family="Arial" font-size="10">- maintenanceService: MaintenanceService</text>
+<text x="58" y="919" font-family="Arial" font-size="10">+ getTasks(maintainerId: Long): List&lt;RepairOrder&gt;</text>
+<text x="58" y="933" font-family="Arial" font-size="10">+ acceptTask(maintainerId: Long, orderId: Long): void</text>
+<text x="58" y="947" font-family="Arial" font-size="10">+ processOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord</text>
+<text x="58" y="961" font-family="Arial" font-size="10">+ continueRepair(maintainerId: Long, orderId: Long): RepairRecord</text>
+<rect x="50" y="1130" width="850" height="243" fill="white" stroke="#334155"/><text x="58" y="1148" font-family="Arial" font-size="14" font-weight="bold">AcceptanceController</text>
+<text x="58" y="1168" font-family="Arial" font-size="10">- acceptanceService: AcceptanceService</text>
+<text x="58" y="1182" font-family="Arial" font-size="10">- evaluationService: EvaluationService</text>
+<text x="58" y="1196" font-family="Arial" font-size="10">+ acceptResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord</text>
+<text x="58" y="1210" font-family="Arial" font-size="10">+ requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord</text>
+<text x="58" y="1224" font-family="Arial" font-size="10">+ evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord</text>
+<rect x="50" y="1393" width="850" height="243" fill="white" stroke="#334155"/><text x="58" y="1411" font-family="Arial" font-size="14" font-weight="bold">QueryStatisticsController</text>
+<text x="58" y="1431" font-family="Arial" font-size="10">- queryService: QueryService</text>
+<text x="58" y="1445" font-family="Arial" font-size="10">- statisticsService: StatisticsService</text>
+<text x="58" y="1459" font-family="Arial" font-size="10">+ queryProgress(userId: Long, orderId: Long): RepairOrder</text>
+<text x="58" y="1473" font-family="Arial" font-size="10">+ queryOrders(userId: Long, status: String, typeId: Long): List&lt;RepairOrder&gt;</text>
+<text x="58" y="1487" font-family="Arial" font-size="10">+ statisticsSummary(): Map&lt;String, Object&gt;</text>
+<rect x="1020" y="100" width="850" height="221" fill="white" stroke="#334155"/><text x="1028" y="118" font-family="Arial" font-size="14" font-weight="bold">UserPermissionService</text>
+<text x="1028" y="138" font-family="Arial" font-size="10">+ login(username: String, password: String): String</text>
+<text x="1028" y="152" font-family="Arial" font-size="10">+ listUsers(roleCode: String, status: String): List&lt;SysUser&gt;</text>
+<text x="1028" y="166" font-family="Arial" font-size="10">+ updateUserStatus(userId: Long, status: String): void</text>
+<text x="1028" y="180" font-family="Arial" font-size="10">+ assignRole(userId: Long, roleId: Long): void</text>
+<text x="1028" y="194" font-family="Arial" font-size="10">+ getUserRoles(userId: Long): List&lt;SysRole&gt;</text>
+<rect x="1020" y="341" width="850" height="199" fill="white" stroke="#334155"/><text x="1028" y="359" font-family="Arial" font-size="14" font-weight="bold">RepairOrderService</text>
+<text x="1028" y="379" font-family="Arial" font-size="10">+ createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List&lt;String&gt;): RepairOrder</text>
+<text x="1028" y="393" font-family="Arial" font-size="10">+ updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder</text>
+<text x="1028" y="407" font-family="Arial" font-size="10">+ getMyOrders(reporterId: Long): List&lt;RepairOrder&gt;</text>
+<text x="1028" y="421" font-family="Arial" font-size="10">+ getProgress(reporterId: Long, orderId: Long): RepairOrder</text>
+<rect x="1020" y="560" width="850" height="177" fill="white" stroke="#334155"/><text x="1028" y="578" font-family="Arial" font-size="14" font-weight="bold">DispatchService</text>
+<text x="1028" y="598" font-family="Arial" font-size="10">+ auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void</text>
+<text x="1028" y="612" font-family="Arial" font-size="10">+ dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord</text>
+<text x="1028" y="626" font-family="Arial" font-size="10">+ listPendingOrders(): List&lt;RepairOrder&gt;</text>
+<rect x="1020" y="757" width="850" height="221" fill="white" stroke="#334155"/><text x="1028" y="775" font-family="Arial" font-size="14" font-weight="bold">MaintenanceService</text>
+<text x="1028" y="795" font-family="Arial" font-size="10">+ listTasks(maintainerId: Long): List&lt;RepairOrder&gt;</text>
+<text x="1028" y="809" font-family="Arial" font-size="10">+ acceptTask(maintainerId: Long, orderId: Long): void</text>
+<text x="1028" y="823" font-family="Arial" font-size="10">+ processRepairOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord</text>
+<text x="1028" y="837" font-family="Arial" font-size="10">+ continueRepair(maintainerId: Long, orderId: Long): RepairRecord</text>
+<text x="1028" y="851" font-family="Arial" font-size="10">+ getRepairHistory(orderId: Long): List&lt;RepairRecord&gt;</text>
+<rect x="1020" y="998" width="850" height="155" fill="white" stroke="#334155"/><text x="1028" y="1016" font-family="Arial" font-size="14" font-weight="bold">EvaluationService</text>
+<text x="1028" y="1036" font-family="Arial" font-size="10">+ evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord</text>
+<text x="1028" y="1050" font-family="Arial" font-size="10">+ getEvaluation(orderId: Long): EvaluationRecord</text>
+<rect x="1020" y="1173" width="850" height="177" fill="white" stroke="#334155"/><text x="1028" y="1191" font-family="Arial" font-size="14" font-weight="bold">AcceptanceService</text>
+<text x="1028" y="1211" font-family="Arial" font-size="10">+ acceptRepairResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord</text>
+<text x="1028" y="1225" font-family="Arial" font-size="10">+ requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord</text>
+<text x="1028" y="1239" font-family="Arial" font-size="10">+ getAcceptanceHistory(orderId: Long): List&lt;AcceptanceRecord&gt;</text>
+<rect x="1020" y="1370" width="850" height="155" fill="white" stroke="#334155"/><text x="1028" y="1388" font-family="Arial" font-size="14" font-weight="bold">QueryService</text>
+<text x="1028" y="1408" font-family="Arial" font-size="10">+ queryOrderProgress(userId: Long, orderId: Long): RepairOrder</text>
+<text x="1028" y="1422" font-family="Arial" font-size="10">+ queryOrders(userId: Long, status: String, typeId: Long): List&lt;RepairOrder&gt;</text>
+<rect x="1020" y="1545" width="850" height="199" fill="white" stroke="#334155"/><text x="1028" y="1563" font-family="Arial" font-size="14" font-weight="bold">StatisticsService</text>
+<text x="1028" y="1583" font-family="Arial" font-size="10">+ countByStatus(): Map&lt;String, Long&gt;</text>
+<text x="1028" y="1597" font-family="Arial" font-size="10">+ countByType(): Map&lt;String, Long&gt;</text>
+<text x="1028" y="1611" font-family="Arial" font-size="10">+ countByPeriod(start: LocalDate, end: LocalDate): Map&lt;String, Long&gt;</text>
+<text x="1028" y="1625" font-family="Arial" font-size="10">+ averageRepairDuration(): Double</text>
+<rect x="1020" y="1764" width="850" height="287" fill="white" stroke="#334155"/><text x="1028" y="1782" font-family="Arial" font-size="14" font-weight="bold">OrderStateService</text>
+<text x="1028" y="1802" font-family="Arial" font-size="10">+ submit(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1816" font-family="Arial" font-size="10">+ approve(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1830" font-family="Arial" font-size="10">+ dispatch(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1844" font-family="Arial" font-size="10">+ startRepair(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1858" font-family="Arial" font-size="10">+ finishRepair(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1872" font-family="Arial" font-size="10">+ accept(orderId: Long, operatorId: Long): void</text>
+<text x="1028" y="1886" font-family="Arial" font-size="10">+ reject(orderId: Long, operatorId: Long, reason: String): void</text>
+<text x="1028" y="1900" font-family="Arial" font-size="10">+ reopen(orderId: Long, operatorId: Long): void</text>
+<rect x="1020" y="2071" width="850" height="177" fill="white" stroke="#334155"/><text x="1028" y="2089" font-family="Arial" font-size="14" font-weight="bold">FileStorageService</text>
+<text x="1028" y="2109" font-family="Arial" font-size="10">+ save(orderId: Long, fileName: String, content: byte[]): String</text>
+<text x="1028" y="2123" font-family="Arial" font-size="10">+ load(fileUrl: String): byte[]</text>
+<text x="1028" y="2137" font-family="Arial" font-size="10">+ delete(fileUrl: String): void</text>
+<rect x="1990" y="100" width="850" height="331" fill="white" stroke="#334155"/><text x="1998" y="118" font-family="Arial" font-size="14" font-weight="bold">UserPermissionServiceImpl</text>
+<text x="1998" y="138" font-family="Arial" font-size="10">- userPermissionRepository: UserPermissionRepository</text>
+<text x="1998" y="152" font-family="Arial" font-size="10">- jwtTokenProvider: JwtTokenProvider</text>
+<text x="1998" y="166" font-family="Arial" font-size="10">+ login(username: String, password: String): String</text>
+<text x="1998" y="180" font-family="Arial" font-size="10">+ listUsers(roleCode: String, status: String): List&lt;SysUser&gt;</text>
+<text x="1998" y="194" font-family="Arial" font-size="10">+ updateUserStatus(userId: Long, status: String): void</text>
+<text x="1998" y="208" font-family="Arial" font-size="10">+ assignRole(userId: Long, roleId: Long): void</text>
+<text x="1998" y="222" font-family="Arial" font-size="10">+ getUserRoles(userId: Long): List&lt;SysRole&gt;</text>
+<text x="1998" y="236" font-family="Arial" font-size="10">- validatePassword(raw: String, encoded: String): boolean</text>
+<text x="1998" y="250" font-family="Arial" font-size="10">- ensureRoleAllowed(roleId: Long): void</text>
+<rect x="1990" y="451" width="850" height="441" fill="white" stroke="#334155"/><text x="1998" y="469" font-family="Arial" font-size="14" font-weight="bold">RepairOrderServiceImpl</text>
+<text x="1998" y="489" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="503" font-family="Arial" font-size="10">- orderStateService: OrderStateService</text>
+<text x="1998" y="517" font-family="Arial" font-size="10">- fileStorageService: FileStorageService</text>
+<text x="1998" y="531" font-family="Arial" font-size="10">- repairTypeRepository: RepairTypeRepository</text>
+<text x="1998" y="545" font-family="Arial" font-size="10">- repairLocationRepository: RepairLocationRepository</text>
+<text x="1998" y="559" font-family="Arial" font-size="10">- repairImageRepository: RepairImageRepository</text>
+<text x="1998" y="573" font-family="Arial" font-size="10">+ createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List&lt;String&gt;): RepairOrder</text>
+<text x="1998" y="587" font-family="Arial" font-size="10">+ updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder</text>
+<text x="1998" y="601" font-family="Arial" font-size="10">+ getMyOrders(reporterId: Long): List&lt;RepairOrder&gt;</text>
+<text x="1998" y="615" font-family="Arial" font-size="10">+ getProgress(reporterId: Long, orderId: Long): RepairOrder</text>
+<text x="1998" y="629" font-family="Arial" font-size="10">- validateCreate(typeId: Long, locationId: Long): void</text>
+<text x="1998" y="643" font-family="Arial" font-size="10">- saveImages(orderId: Long, files: List&lt;String&gt;): void</text>
+<text x="1998" y="657" font-family="Arial" font-size="10">- checkOwner(reporterId: Long, orderId: Long): void</text>
+<text x="1998" y="671" font-family="Arial" font-size="10">- sanitizeInput(text: String): String</text>
+<rect x="1990" y="912" width="850" height="331" fill="white" stroke="#334155"/><text x="1998" y="930" font-family="Arial" font-size="14" font-weight="bold">DispatchServiceImpl</text>
+<text x="1998" y="950" font-family="Arial" font-size="10">- dispatchRepository: DispatchRepository</text>
+<text x="1998" y="964" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="978" font-family="Arial" font-size="10">- userPermissionRepository: UserPermissionRepository</text>
+<text x="1998" y="992" font-family="Arial" font-size="10">- orderStateService: OrderStateService</text>
+<text x="1998" y="1006" font-family="Arial" font-size="10">+ auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void</text>
+<text x="1998" y="1020" font-family="Arial" font-size="10">+ dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord</text>
+<text x="1998" y="1034" font-family="Arial" font-size="10">+ listPendingOrders(): List&lt;RepairOrder&gt;</text>
+<text x="1998" y="1048" font-family="Arial" font-size="10">- checkAuditCondition(orderId: Long): void</text>
+<text x="1998" y="1062" font-family="Arial" font-size="10">- validateMaintainer(maintainerId: Long): void</text>
+<rect x="1990" y="1263" width="850" height="441" fill="white" stroke="#334155"/><text x="1998" y="1281" font-family="Arial" font-size="14" font-weight="bold">MaintenanceServiceImpl</text>
+<text x="1998" y="1301" font-family="Arial" font-size="10">- maintenanceRepository: MaintenanceRepository</text>
+<text x="1998" y="1315" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="1329" font-family="Arial" font-size="10">- orderStateService: OrderStateService</text>
+<text x="1998" y="1343" font-family="Arial" font-size="10">+ listTasks(maintainerId: Long): List&lt;RepairOrder&gt;</text>
+<text x="1998" y="1357" font-family="Arial" font-size="10">+ acceptTask(maintainerId: Long, orderId: Long): void</text>
+<text x="1998" y="1371" font-family="Arial" font-size="10">+ processRepairOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord</text>
+<text x="1998" y="1385" font-family="Arial" font-size="10">+ continueRepair(maintainerId: Long, orderId: Long): RepairRecord</text>
+<text x="1998" y="1399" font-family="Arial" font-size="10">+ getRepairHistory(orderId: Long): List&lt;RepairRecord&gt;</text>
+<text x="1998" y="1413" font-family="Arial" font-size="10">- validateAssignment(maintainerId: Long, orderId: Long): void</text>
+<text x="1998" y="1427" font-family="Arial" font-size="10">- validateRepairState(orderId: Long): void</text>
+<text x="1998" y="1441" font-family="Arial" font-size="10">- ensureRecordComplete(processDesc: String, repairResult: String): void</text>
+<text x="1998" y="1455" font-family="Arial" font-size="10">- resolveNextState(repairResult: String, unfinishedReason: String): String</text>
+<text x="1998" y="1469" font-family="Arial" font-size="10">- saveResult(record: RepairRecord): RepairRecord</text>
+<text x="1998" y="1483" font-family="Arial" font-size="10">- handlePersistenceFailure(orderId: Long): void</text>
+<rect x="1990" y="1724" width="850" height="265" fill="white" stroke="#334155"/><text x="1998" y="1742" font-family="Arial" font-size="14" font-weight="bold">EvaluationServiceImpl</text>
+<text x="1998" y="1762" font-family="Arial" font-size="10">- evaluationRepository: EvaluationRepository</text>
+<text x="1998" y="1776" font-family="Arial" font-size="10">- acceptanceRepository: AcceptanceRepository</text>
+<text x="1998" y="1790" font-family="Arial" font-size="10">+ evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord</text>
+<text x="1998" y="1804" font-family="Arial" font-size="10">+ getEvaluation(orderId: Long): EvaluationRecord</text>
+<text x="1998" y="1818" font-family="Arial" font-size="10">- validateEvaluationPermission(reporterId: Long, orderId: Long): void</text>
+<text x="1998" y="1832" font-family="Arial" font-size="10">- validateScore(score: Integer): void</text>
+<rect x="1990" y="2009" width="850" height="375" fill="white" stroke="#334155"/><text x="1998" y="2027" font-family="Arial" font-size="14" font-weight="bold">AcceptanceServiceImpl</text>
+<text x="1998" y="2047" font-family="Arial" font-size="10">- acceptanceRepository: AcceptanceRepository</text>
+<text x="1998" y="2061" font-family="Arial" font-size="10">- maintenanceRepository: MaintenanceRepository</text>
+<text x="1998" y="2075" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="2089" font-family="Arial" font-size="10">- orderStateService: OrderStateService</text>
+<text x="1998" y="2103" font-family="Arial" font-size="10">+ acceptRepairResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord</text>
+<text x="1998" y="2117" font-family="Arial" font-size="10">+ requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord</text>
+<text x="1998" y="2131" font-family="Arial" font-size="10">+ getAcceptanceHistory(orderId: Long): List&lt;AcceptanceRecord&gt;</text>
+<text x="1998" y="2145" font-family="Arial" font-size="10">- checkOwner(reporterId: Long, orderId: Long): void</text>
+<text x="1998" y="2159" font-family="Arial" font-size="10">- checkAcceptanceState(orderId: Long): void</text>
+<text x="1998" y="2173" font-family="Arial" font-size="10">- validateReturnReason(passed: boolean, returnReason: String): void</text>
+<text x="1998" y="2187" font-family="Arial" font-size="10">- persistAcceptance(record: AcceptanceRecord): AcceptanceRecord</text>
+<rect x="1990" y="2404" width="850" height="243" fill="white" stroke="#334155"/><text x="1998" y="2422" font-family="Arial" font-size="14" font-weight="bold">QueryServiceImpl</text>
+<text x="1998" y="2442" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="2456" font-family="Arial" font-size="10">+ queryOrderProgress(userId: Long, orderId: Long): RepairOrder</text>
+<text x="1998" y="2470" font-family="Arial" font-size="10">+ queryOrders(userId: Long, status: String, typeId: Long): List&lt;RepairOrder&gt;</text>
+<text x="1998" y="2484" font-family="Arial" font-size="10">- checkQueryPermission(userId: Long, orderId: Long): void</text>
+<text x="1998" y="2498" font-family="Arial" font-size="10">- normalizeStatus(status: String): String</text>
+<rect x="1990" y="2667" width="850" height="353" fill="white" stroke="#334155"/><text x="1998" y="2685" font-family="Arial" font-size="14" font-weight="bold">StatisticsServiceImpl</text>
+<text x="1998" y="2705" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="2719" font-family="Arial" font-size="10">- maintenanceRepository: MaintenanceRepository</text>
+<text x="1998" y="2733" font-family="Arial" font-size="10">- acceptanceRepository: AcceptanceRepository</text>
+<text x="1998" y="2747" font-family="Arial" font-size="10">- evaluationRepository: EvaluationRepository</text>
+<text x="1998" y="2761" font-family="Arial" font-size="10">+ countByStatus(): Map&lt;String, Long&gt;</text>
+<text x="1998" y="2775" font-family="Arial" font-size="10">+ countByType(): Map&lt;String, Long&gt;</text>
+<text x="1998" y="2789" font-family="Arial" font-size="10">+ countByPeriod(start: LocalDate, end: LocalDate): Map&lt;String, Long&gt;</text>
+<text x="1998" y="2803" font-family="Arial" font-size="10">+ averageRepairDuration(): Double</text>
+<text x="1998" y="2817" font-family="Arial" font-size="10">- normalizePeriod(start: LocalDate, end: LocalDate): void</text>
+<text x="1998" y="2831" font-family="Arial" font-size="10">- calculateDuration(start: LocalDateTime, end: LocalDateTime): long</text>
+<rect x="1990" y="3040" width="850" height="397" fill="white" stroke="#334155"/><text x="1998" y="3058" font-family="Arial" font-size="14" font-weight="bold">OrderStateServiceImpl</text>
+<text x="1998" y="3078" font-family="Arial" font-size="10">- repairOrderRepository: RepairOrderRepository</text>
+<text x="1998" y="3092" font-family="Arial" font-size="10">- orderStatusRepository: OrderStatusRepository</text>
+<text x="1998" y="3106" font-family="Arial" font-size="10">+ submit(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3120" font-family="Arial" font-size="10">+ approve(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3134" font-family="Arial" font-size="10">+ dispatch(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3148" font-family="Arial" font-size="10">+ startRepair(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3162" font-family="Arial" font-size="10">+ finishRepair(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3176" font-family="Arial" font-size="10">+ accept(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3190" font-family="Arial" font-size="10">+ reject(orderId: Long, operatorId: Long, reason: String): void</text>
+<text x="1998" y="3204" font-family="Arial" font-size="10">+ reopen(orderId: Long, operatorId: Long): void</text>
+<text x="1998" y="3218" font-family="Arial" font-size="10">- canTransit(oldStatus: String, newStatus: String): boolean</text>
+<text x="1998" y="3232" font-family="Arial" font-size="10">- appendLog(orderId: Long, operatorId: Long, oldStatus: String, newStatus: String, reason: String): void</text>
+<rect x="1990" y="3457" width="850" height="287" fill="white" stroke="#334155"/><text x="1998" y="3475" font-family="Arial" font-size="14" font-weight="bold">LocalFileStorageServiceImpl</text>
+<text x="1998" y="3495" font-family="Arial" font-size="10">- basePath: String</text>
+<text x="1998" y="3509" font-family="Arial" font-size="10">+ save(orderId: Long, fileName: String, content: byte[]): String</text>
+<text x="1998" y="3523" font-family="Arial" font-size="10">+ load(fileUrl: String): byte[]</text>
+<text x="1998" y="3537" font-family="Arial" font-size="10">+ delete(fileUrl: String): void</text>
+<text x="1998" y="3551" font-family="Arial" font-size="10">- validateFile(fileName: String, content: byte[]): void</text>
+<text x="1998" y="3565" font-family="Arial" font-size="10">- buildPath(orderId: Long, fileName: String): String</text>
+<text x="1998" y="3579" font-family="Arial" font-size="10">- ensureDirectory(orderId: Long): void</text>
+<rect x="2960" y="100" width="850" height="243" fill="white" stroke="#334155"/><text x="2968" y="118" font-family="Arial" font-size="14" font-weight="bold">UserPermissionRepository</text>
+<text x="2968" y="138" font-family="Arial" font-size="10">+ findUserByUsername(username: String): SysUser</text>
+<text x="2968" y="152" font-family="Arial" font-size="10">+ findUserById(userId: Long): SysUser</text>
+<text x="2968" y="166" font-family="Arial" font-size="10">+ findRolesByUserId(userId: Long): List&lt;SysRole&gt;</text>
+<text x="2968" y="180" font-family="Arial" font-size="10">+ saveUser(user: SysUser): void</text>
+<text x="2968" y="194" font-family="Arial" font-size="10">+ updateStatus(userId: Long, status: String): void</text>
+<text x="2968" y="208" font-family="Arial" font-size="10">+ saveUserRole(userRole: SysUserRole): void</text>
+<rect x="2960" y="363" width="850" height="221" fill="white" stroke="#334155"/><text x="2968" y="381" font-family="Arial" font-size="14" font-weight="bold">RepairOrderRepository</text>
+<text x="2968" y="401" font-family="Arial" font-size="10">+ insertOrder(order: RepairOrder): RepairOrder</text>
+<text x="2968" y="415" font-family="Arial" font-size="10">+ findById(orderId: Long): RepairOrder</text>
+<text x="2968" y="429" font-family="Arial" font-size="10">+ findByReporter(reporterId: Long): List&lt;RepairOrder&gt;</text>
+<text x="2968" y="443" font-family="Arial" font-size="10">+ updateOrder(order: RepairOrder): void</text>
+<text x="2968" y="457" font-family="Arial" font-size="10">+ findByFilters(status: String, typeId: Long): List&lt;RepairOrder&gt;</text>
+<rect x="2960" y="604" width="850" height="155" fill="white" stroke="#334155"/><text x="2968" y="622" font-family="Arial" font-size="14" font-weight="bold">RepairTypeRepository</text>
+<text x="2968" y="642" font-family="Arial" font-size="10">+ findById(typeId: Long): RepairType</text>
+<text x="2968" y="656" font-family="Arial" font-size="10">+ findAllEnabled(): List&lt;RepairType&gt;</text>
+<rect x="2960" y="779" width="850" height="155" fill="white" stroke="#334155"/><text x="2968" y="797" font-family="Arial" font-size="14" font-weight="bold">RepairLocationRepository</text>
+<text x="2968" y="817" font-family="Arial" font-size="10">+ findById(locationId: Long): RepairLocation</text>
+<text x="2968" y="831" font-family="Arial" font-size="10">+ findAllEnabled(): List&lt;RepairLocation&gt;</text>
+<rect x="2960" y="954" width="850" height="177" fill="white" stroke="#334155"/><text x="2968" y="972" font-family="Arial" font-size="14" font-weight="bold">RepairImageRepository</text>
+<text x="2968" y="992" font-family="Arial" font-size="10">+ save(image: RepairImage): RepairImage</text>
+<text x="2968" y="1006" font-family="Arial" font-size="10">+ findByOrder(orderId: Long): List&lt;RepairImage&gt;</text>
+<text x="2968" y="1020" font-family="Arial" font-size="10">+ deleteByOrder(orderId: Long): void</text>
+<rect x="2960" y="1151" width="850" height="199" fill="white" stroke="#334155"/><text x="2968" y="1169" font-family="Arial" font-size="14" font-weight="bold">DispatchRepository</text>
+<text x="2968" y="1189" font-family="Arial" font-size="10">+ save(record: DispatchRecord): DispatchRecord</text>
+<text x="2968" y="1203" font-family="Arial" font-size="10">+ findLatestByOrder(orderId: Long): DispatchRecord</text>
+<text x="2968" y="1217" font-family="Arial" font-size="10">+ findTasksByMaintainer(maintainerId: Long): List&lt;DispatchRecord&gt;</text>
+<text x="2968" y="1231" font-family="Arial" font-size="10">+ updateStatus(dispatchId: Long, status: String): void</text>
+<rect x="2960" y="1370" width="850" height="199" fill="white" stroke="#334155"/><text x="2968" y="1388" font-family="Arial" font-size="14" font-weight="bold">MaintenanceRepository</text>
+<text x="2968" y="1408" font-family="Arial" font-size="10">+ saveRepairRecord(record: RepairRecord): RepairRecord</text>
+<text x="2968" y="1422" font-family="Arial" font-size="10">+ findByOrder(orderId: Long): List&lt;RepairRecord&gt;</text>
+<text x="2968" y="1436" font-family="Arial" font-size="10">+ findLatestByOrder(orderId: Long): RepairRecord</text>
+<text x="2968" y="1450" font-family="Arial" font-size="10">+ updateRepairRecord(record: RepairRecord): void</text>
+<rect x="2960" y="1589" width="850" height="177" fill="white" stroke="#334155"/><text x="2968" y="1607" font-family="Arial" font-size="14" font-weight="bold">AcceptanceRepository</text>
+<text x="2968" y="1627" font-family="Arial" font-size="10">+ saveAcceptance(record: AcceptanceRecord): AcceptanceRecord</text>
+<text x="2968" y="1641" font-family="Arial" font-size="10">+ findByOrder(orderId: Long): List&lt;AcceptanceRecord&gt;</text>
+<text x="2968" y="1655" font-family="Arial" font-size="10">+ findLatestByOrder(orderId: Long): AcceptanceRecord</text>
+<rect x="2960" y="1786" width="850" height="177" fill="white" stroke="#334155"/><text x="2968" y="1804" font-family="Arial" font-size="14" font-weight="bold">EvaluationRepository</text>
+<text x="2968" y="1824" font-family="Arial" font-size="10">+ saveEvaluation(record: EvaluationRecord): EvaluationRecord</text>
+<text x="2968" y="1838" font-family="Arial" font-size="10">+ findByOrder(orderId: Long): List&lt;EvaluationRecord&gt;</text>
+<text x="2968" y="1852" font-family="Arial" font-size="10">+ existsByOrder(orderId: Long): boolean</text>
+<rect x="2960" y="1983" width="850" height="177" fill="white" stroke="#334155"/><text x="2968" y="2001" font-family="Arial" font-size="14" font-weight="bold">OrderStatusRepository</text>
+<text x="2968" y="2021" font-family="Arial" font-size="10">+ appendLog(log: OrderStatusLog): void</text>
+<text x="2968" y="2035" font-family="Arial" font-size="10">+ findByOrder(orderId: Long): List&lt;OrderStatusLog&gt;</text>
+<text x="2968" y="2049" font-family="Arial" font-size="10">+ findLatest(orderId: Long): OrderStatusLog</text>
+<rect x="3930" y="100" width="850" height="199" fill="white" stroke="#334155"/><text x="3938" y="118" font-family="Arial" font-size="14" font-weight="bold">AbstractAuditableEntity</text>
+<text x="3938" y="138" font-family="Arial" font-size="10"># createTime: LocalDateTime</text>
+<text x="3938" y="152" font-family="Arial" font-size="10"># updateTime: LocalDateTime</text>
+<text x="3938" y="166" font-family="Arial" font-size="10">+ touchUpdate(): void</text>
+<rect x="3930" y="319" width="850" height="331" fill="white" stroke="#334155"/><text x="3938" y="337" font-family="Arial" font-size="14" font-weight="bold">SysUser</text>
+<text x="3938" y="357" font-family="Arial" font-size="10">- userId: Long</text>
+<text x="3938" y="371" font-family="Arial" font-size="10">- username: String</text>
+<text x="3938" y="385" font-family="Arial" font-size="10">- passwordHash: String</text>
+<text x="3938" y="399" font-family="Arial" font-size="10">- realName: String</text>
+<text x="3938" y="413" font-family="Arial" font-size="10">- phone: String</text>
+<text x="3938" y="427" font-family="Arial" font-size="10">- status: String</text>
+<text x="3938" y="441" font-family="Arial" font-size="10">+ changeStatus(status: String): void</text>
+<text x="3938" y="455" font-family="Arial" font-size="10">+ updateProfile(realName: String, phone: String): void</text>
+<text x="3938" y="469" font-family="Arial" font-size="10">+ isEnabled(): boolean</text>
+<rect x="3930" y="670" width="850" height="265" fill="white" stroke="#334155"/><text x="3938" y="688" font-family="Arial" font-size="14" font-weight="bold">SysRole</text>
+<text x="3938" y="708" font-family="Arial" font-size="10">- roleId: Long</text>
+<text x="3938" y="722" font-family="Arial" font-size="10">- roleName: String</text>
+<text x="3938" y="736" font-family="Arial" font-size="10">- roleCode: String</text>
+<text x="3938" y="750" font-family="Arial" font-size="10">- remark: String</text>
+<text x="3938" y="764" font-family="Arial" font-size="10">+ rename(roleName: String): void</text>
+<text x="3938" y="778" font-family="Arial" font-size="10">+ changeRemark(remark: String): void</text>
+<rect x="3930" y="955" width="850" height="243" fill="white" stroke="#334155"/><text x="3938" y="973" font-family="Arial" font-size="14" font-weight="bold">SysUserRole</text>
+<text x="3938" y="993" font-family="Arial" font-size="10">- id: Long</text>
+<text x="3938" y="1007" font-family="Arial" font-size="10">- userId: Long</text>
+<text x="3938" y="1021" font-family="Arial" font-size="10">- roleId: Long</text>
+<text x="3938" y="1035" font-family="Arial" font-size="10">- assignTime: LocalDateTime</text>
+<text x="3938" y="1049" font-family="Arial" font-size="10">+ matches(userId: Long, roleId: Long): boolean</text>
+<rect x="3930" y="1218" width="850" height="331" fill="white" stroke="#334155"/><text x="3938" y="1236" font-family="Arial" font-size="14" font-weight="bold">RepairOrder</text>
+<text x="3938" y="1256" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="1270" font-family="Arial" font-size="10">- reporterId: Long</text>
+<text x="3938" y="1284" font-family="Arial" font-size="10">- typeId: Long</text>
+<text x="3938" y="1298" font-family="Arial" font-size="10">- locationId: Long</text>
+<text x="3938" y="1312" font-family="Arial" font-size="10">- title: String</text>
+<text x="3938" y="1326" font-family="Arial" font-size="10">- description: String</text>
+<text x="3938" y="1340" font-family="Arial" font-size="10">- status: String</text>
+<text x="3938" y="1354" font-family="Arial" font-size="10">+ updateContent(title: String, description: String): void</text>
+<text x="3938" y="1368" font-family="Arial" font-size="10">+ isOwnedBy(userId: Long): boolean</text>
+<rect x="3930" y="1569" width="850" height="287" fill="white" stroke="#334155"/><text x="3938" y="1587" font-family="Arial" font-size="14" font-weight="bold">RepairType</text>
+<text x="3938" y="1607" font-family="Arial" font-size="10">- typeId: Long</text>
+<text x="3938" y="1621" font-family="Arial" font-size="10">- typeName: String</text>
+<text x="3938" y="1635" font-family="Arial" font-size="10">- typeCode: String</text>
+<text x="3938" y="1649" font-family="Arial" font-size="10">- description: String</text>
+<text x="3938" y="1663" font-family="Arial" font-size="10">- status: String</text>
+<text x="3938" y="1677" font-family="Arial" font-size="10">+ enable(): void</text>
+<text x="3938" y="1691" font-family="Arial" font-size="10">+ disable(): void</text>
+<rect x="3930" y="1876" width="850" height="309" fill="white" stroke="#334155"/><text x="3938" y="1894" font-family="Arial" font-size="14" font-weight="bold">RepairLocation</text>
+<text x="3938" y="1914" font-family="Arial" font-size="10">- locationId: Long</text>
+<text x="3938" y="1928" font-family="Arial" font-size="10">- buildingName: String</text>
+<text x="3938" y="1942" font-family="Arial" font-size="10">- areaName: String</text>
+<text x="3938" y="1956" font-family="Arial" font-size="10">- roomNo: String</text>
+<text x="3938" y="1970" font-family="Arial" font-size="10">- description: String</text>
+<text x="3938" y="1984" font-family="Arial" font-size="10">- status: String</text>
+<text x="3938" y="1998" font-family="Arial" font-size="10">+ enable(): void</text>
+<text x="3938" y="2012" font-family="Arial" font-size="10">+ disable(): void</text>
+<rect x="3930" y="2205" width="850" height="265" fill="white" stroke="#334155"/><text x="3938" y="2223" font-family="Arial" font-size="14" font-weight="bold">RepairImage</text>
+<text x="3938" y="2243" font-family="Arial" font-size="10">- imageId: Long</text>
+<text x="3938" y="2257" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="2271" font-family="Arial" font-size="10">- fileUrl: String</text>
+<text x="3938" y="2285" font-family="Arial" font-size="10">- fileName: String</text>
+<text x="3938" y="2299" font-family="Arial" font-size="10">- uploadTime: LocalDateTime</text>
+<text x="3938" y="2313" font-family="Arial" font-size="10">+ getExtension(): String</text>
+<rect x="3930" y="2490" width="850" height="309" fill="white" stroke="#334155"/><text x="3938" y="2508" font-family="Arial" font-size="14" font-weight="bold">DispatchRecord</text>
+<text x="3938" y="2528" font-family="Arial" font-size="10">- dispatchId: Long</text>
+<text x="3938" y="2542" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="2556" font-family="Arial" font-size="10">- adminId: Long</text>
+<text x="3938" y="2570" font-family="Arial" font-size="10">- maintainerId: Long</text>
+<text x="3938" y="2584" font-family="Arial" font-size="10">- dispatchTime: LocalDateTime</text>
+<text x="3938" y="2598" font-family="Arial" font-size="10">- dispatchNote: String</text>
+<text x="3938" y="2612" font-family="Arial" font-size="10">- dispatchStatus: String</text>
+<text x="3938" y="2626" font-family="Arial" font-size="10">+ changeStatus(status: String): void</text>
+<rect x="3930" y="2819" width="850" height="353" fill="white" stroke="#334155"/><text x="3938" y="2837" font-family="Arial" font-size="14" font-weight="bold">RepairRecord</text>
+<text x="3938" y="2857" font-family="Arial" font-size="10">- repairId: Long</text>
+<text x="3938" y="2871" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="2885" font-family="Arial" font-size="10">- maintainerId: Long</text>
+<text x="3938" y="2899" font-family="Arial" font-size="10">- startTime: LocalDateTime</text>
+<text x="3938" y="2913" font-family="Arial" font-size="10">- endTime: LocalDateTime</text>
+<text x="3938" y="2927" font-family="Arial" font-size="10">- processDesc: String</text>
+<text x="3938" y="2941" font-family="Arial" font-size="10">- repairResult: String</text>
+<text x="3938" y="2955" font-family="Arial" font-size="10">- unfinishedReason: String</text>
+<text x="3938" y="2969" font-family="Arial" font-size="10">+ finish(result: String): void</text>
+<text x="3938" y="2983" font-family="Arial" font-size="10">+ recordUnfinished(reason: String): void</text>
+<rect x="3930" y="3192" width="850" height="309" fill="white" stroke="#334155"/><text x="3938" y="3210" font-family="Arial" font-size="14" font-weight="bold">AcceptanceRecord</text>
+<text x="3938" y="3230" font-family="Arial" font-size="10">- acceptanceId: Long</text>
+<text x="3938" y="3244" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="3258" font-family="Arial" font-size="10">- reporterId: Long</text>
+<text x="3938" y="3272" font-family="Arial" font-size="10">- acceptResult: String</text>
+<text x="3938" y="3286" font-family="Arial" font-size="10">- returnReason: String</text>
+<text x="3938" y="3300" font-family="Arial" font-size="10">- acceptTime: LocalDateTime</text>
+<text x="3938" y="3314" font-family="Arial" font-size="10">+ pass(): void</text>
+<text x="3938" y="3328" font-family="Arial" font-size="10">+ reject(reason: String): void</text>
+<rect x="3930" y="3521" width="850" height="287" fill="white" stroke="#334155"/><text x="3938" y="3539" font-family="Arial" font-size="14" font-weight="bold">EvaluationRecord</text>
+<text x="3938" y="3559" font-family="Arial" font-size="10">- evaluationId: Long</text>
+<text x="3938" y="3573" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="3587" font-family="Arial" font-size="10">- reporterId: Long</text>
+<text x="3938" y="3601" font-family="Arial" font-size="10">- score: Integer</text>
+<text x="3938" y="3615" font-family="Arial" font-size="10">- comment: String</text>
+<text x="3938" y="3629" font-family="Arial" font-size="10">- evaluateTime: LocalDateTime</text>
+<text x="3938" y="3643" font-family="Arial" font-size="10">+ validateScore(): boolean</text>
+<rect x="3930" y="3828" width="850" height="309" fill="white" stroke="#334155"/><text x="3938" y="3846" font-family="Arial" font-size="14" font-weight="bold">OrderStatusLog</text>
+<text x="3938" y="3866" font-family="Arial" font-size="10">- logId: Long</text>
+<text x="3938" y="3880" font-family="Arial" font-size="10">- orderId: Long</text>
+<text x="3938" y="3894" font-family="Arial" font-size="10">- operatorId: Long</text>
+<text x="3938" y="3908" font-family="Arial" font-size="10">- oldStatus: String</text>
+<text x="3938" y="3922" font-family="Arial" font-size="10">- newStatus: String</text>
+<text x="3938" y="3936" font-family="Arial" font-size="10">- changeReason: String</text>
+<text x="3938" y="3950" font-family="Arial" font-size="10">- changeTime: LocalDateTime</text>
+<text x="3938" y="3964" font-family="Arial" font-size="10">+ describeTransition(): String</text>
+<rect x="4900" y="100" width="850" height="199" fill="white" stroke="#334155"/><text x="4908" y="118" font-family="Arial" font-size="14" font-weight="bold">JwtTokenProvider</text>
+<text x="4908" y="138" font-family="Arial" font-size="10">+ generateToken(userId: Long, roles: List&lt;String&gt;): String</text>
+<text x="4908" y="152" font-family="Arial" font-size="10">+ parseUserId(token: String): Long</text>
+<text x="4908" y="166" font-family="Arial" font-size="10">+ parseRoles(token: String): List&lt;String&gt;</text>
+<text x="4908" y="180" font-family="Arial" font-size="10">+ validateToken(token: String): boolean</text>
+</svg>

@@ -1,0 +1,76 @@
+digraph processRepairOrder {
+    graph [
+        charset="UTF-8",
+        rankdir=TB,
+        labelloc=t,
+        label="MaintenanceServiceImpl.processRepairOrder() 控制流图",
+        fontname="Hiragino Sans GB",
+        fontsize=20,
+        pad=0.25,
+        nodesep=0.55,
+        ranksep=0.65,
+        splines=polyline,
+        outputorder=edgesfirst,
+        bgcolor="white"
+    ];
+
+    node [
+        fontname="Hiragino Sans GB",
+        fontsize=12,
+        margin="0.16,0.10",
+        color="#263238",
+        penwidth=1.5,
+        style="filled",
+        fillcolor="#F8FAFC"
+    ];
+    edge [
+        fontname="Hiragino Sans GB",
+        fontsize=11,
+        color="#455A64",
+        penwidth=1.25,
+        arrowsize=0.75
+    ];
+
+    N1  [shape=ellipse, fillcolor="#E8F5E9", label="N1\n开始"];
+    N2  [shape=box, label="N2\n读取工单与派单信息"];
+    N3  [shape=diamond, fillcolor="#FFF3E0", label="N3\n当前维修人员是否为该工单的\n派单对象？"];
+    N4  [shape=diamond, fillcolor="#FFF3E0", label="N4\n工单当前状态是否允许维修？"];
+    N5  [shape=diamond, fillcolor="#FFF3E0", label="N5\n是否为返修工单？"];
+    N6  [shape=box, label="N6\n读取返修原因及历史维修记录"];
+    N7  [shape=box, label="N7\n执行现场检查与维修"];
+    N8  [shape=diamond, fillcolor="#FFF3E0", label="N8\n本次是否完成维修？"];
+    N9  [shape=box, label="N9\n填写未完成原因"];
+    N10 [shape=diamond, fillcolor="#FFF3E0", label="N10\n未完成原因是否有效？"];
+    N11 [shape=box, label="N11\n保存未完成维修记录，\n工单状态保持“处理中”"];
+    N12 [shape=box, label="N12\n填写维修过程与维修结果"];
+    N13 [shape=diamond, fillcolor="#FFF3E0", label="N13\n维修记录是否完整？"];
+    N14 [shape=diamond, fillcolor="#FFF3E0", label="N14\n保存维修记录是否成功？"];
+    N15 [shape=diamond, fillcolor="#FFF3E0", label="N15\n更新工单状态为“待验收”\n是否成功？"];
+    N16 [shape=box, fillcolor="#FFEBEE", label="N16\n回滚本次变更并返回失败信息"];
+    N17 [shape=ellipse, fillcolor="#E8F5E9", label="N17\n返回处理结果并结束"];
+
+    N1 -> N2;
+    N2 -> N3;
+    N3 -> N4  [label="是"];
+    N3 -> N16 [label="否"];
+    N4 -> N5  [label="是"];
+    N4 -> N16 [label="否"];
+    N5 -> N6  [label="是"];
+    N5 -> N7  [label="否"];
+    N6 -> N7;
+    N7 -> N8;
+    N8 -> N12 [label="是"];
+    N8 -> N9  [label="否"];
+    N9 -> N10;
+    N10 -> N11 [label="是"];
+    N10 -> N9  [label="否"];
+    N11 -> N17;
+    N12 -> N13;
+    N13 -> N14 [label="是"];
+    N13 -> N12 [label="否"];
+    N14 -> N15 [label="是"];
+    N14 -> N16 [label="否"];
+    N15 -> N17 [label="是"];
+    N15 -> N16 [label="否"];
+    N16 -> N17;
+}

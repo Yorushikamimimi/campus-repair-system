@@ -1,0 +1,504 @@
+@startuml
+title 校园报修工单管理系统系统类图（改进前）
+left to right direction
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam dpi 180
+package "web / controller" {
+  class UserController {
+    - userPermissionService: UserPermissionService
+    --
+    + login(username: String, password: String): String
+    + listUsers(roleCode: String, status: String): List<SysUser>
+    + updateUserStatus(userId: Long, status: String): void
+    + assignRole(userId: Long, roleId: Long): void
+  }
+  class RepairOrderController {
+    - repairOrderService: RepairOrderService
+    --
+    + createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List<String>): RepairOrder
+    + updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder
+    + getMyOrders(reporterId: Long): List<RepairOrder>
+    + getProgress(reporterId: Long, orderId: Long): RepairOrder
+  }
+  class DispatchController {
+    - dispatchService: DispatchService
+    --
+    + auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void
+    + dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord
+    + listPendingOrders(): List<RepairOrder>
+  }
+  class MaintenanceController {
+    - maintenanceService: MaintenanceService
+    --
+    + getTasks(maintainerId: Long): List<RepairOrder>
+    + acceptTask(maintainerId: Long, orderId: Long): void
+    + processOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord
+    + continueRepair(maintainerId: Long, orderId: Long): RepairRecord
+  }
+  class AcceptanceController {
+    - acceptanceService: AcceptanceService
+    --
+    + acceptResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord
+    + requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord
+    + evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord
+  }
+  class QueryStatisticsController {
+    - queryService: QueryService
+    - statisticsService: StatisticsService
+    --
+    + queryProgress(userId: Long, orderId: Long): RepairOrder
+    + queryOrders(userId: Long, status: String, typeId: Long): List<RepairOrder>
+    + statisticsSummary(): Map<String, Object>
+  }
+}
+package "service interface" {
+  interface UserPermissionService {
+    + login(username: String, password: String): String
+    + listUsers(roleCode: String, status: String): List<SysUser>
+    + updateUserStatus(userId: Long, status: String): void
+    + assignRole(userId: Long, roleId: Long): void
+    + getUserRoles(userId: Long): List<SysRole>
+  }
+  interface RepairOrderService {
+    + createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List<String>): RepairOrder
+    + updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder
+    + getMyOrders(reporterId: Long): List<RepairOrder>
+    + getProgress(reporterId: Long, orderId: Long): RepairOrder
+  }
+  interface DispatchService {
+    + auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void
+    + dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord
+    + listPendingOrders(): List<RepairOrder>
+  }
+  interface MaintenanceService {
+    + listTasks(maintainerId: Long): List<RepairOrder>
+    + acceptTask(maintainerId: Long, orderId: Long): void
+    + processRepairOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord
+    + continueRepair(maintainerId: Long, orderId: Long): RepairRecord
+    + getRepairHistory(orderId: Long): List<RepairRecord>
+  }
+  interface AcceptanceService {
+    + acceptRepairResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord
+    + requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord
+    + evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord
+    + getAcceptanceHistory(orderId: Long): List<AcceptanceRecord>
+  }
+  interface QueryService {
+    + queryOrderProgress(userId: Long, orderId: Long): RepairOrder
+    + queryOrders(userId: Long, status: String, typeId: Long): List<RepairOrder>
+    + queryRepairHistory(orderId: Long): List<RepairRecord>
+  }
+  interface StatisticsService {
+    + countByStatus(): Map<String, Long>
+    + countByType(): Map<String, Long>
+    + countByPeriod(start: LocalDate, end: LocalDate): Map<String, Long>
+    + averageRepairDuration(): Double
+  }
+  interface OrderStateService {
+    + submit(orderId: Long, operatorId: Long): void
+    + approve(orderId: Long, operatorId: Long): void
+    + dispatch(orderId: Long, operatorId: Long): void
+    + startRepair(orderId: Long, operatorId: Long): void
+    + finishRepair(orderId: Long, operatorId: Long): void
+    + accept(orderId: Long, operatorId: Long): void
+    + reject(orderId: Long, operatorId: Long, reason: String): void
+    + reopen(orderId: Long, operatorId: Long): void
+  }
+  interface FileStorageService {
+    + save(orderId: Long, fileName: String, content: byte[]): String
+    + load(fileUrl: String): byte[]
+    + delete(fileUrl: String): void
+  }
+}
+package "service implementation" {
+  class UserPermissionServiceImpl {
+    - userPermissionRepository: UserPermissionRepository
+    - jwtTokenProvider: JwtTokenProvider
+    --
+    + login(username: String, password: String): String
+    + listUsers(roleCode: String, status: String): List<SysUser>
+    + updateUserStatus(userId: Long, status: String): void
+    + assignRole(userId: Long, roleId: Long): void
+    + getUserRoles(userId: Long): List<SysRole>
+    - validatePassword(raw: String, encoded: String): boolean
+    - ensureRoleAllowed(roleId: Long): void
+  }
+  class RepairOrderServiceImpl {
+    - repairOrderRepository: RepairOrderRepository
+    - orderStateService: OrderStateService
+    - fileStorageService: FileStorageService
+    --
+    + createOrder(reporterId: Long, typeId: Long, locationId: Long, title: String, description: String, files: List<String>): RepairOrder
+    + updateOrder(reporterId: Long, orderId: Long, title: String, description: String): RepairOrder
+    + getMyOrders(reporterId: Long): List<RepairOrder>
+    + getProgress(reporterId: Long, orderId: Long): RepairOrder
+    - validateCreate(typeId: Long, locationId: Long): void
+    - saveImages(orderId: Long, files: List<String>): void
+    - checkOwner(reporterId: Long, orderId: Long): void
+    - sanitizeInput(text: String): String
+  }
+  class DispatchServiceImpl {
+    - dispatchRepository: DispatchRepository
+    - repairOrderRepository: RepairOrderRepository
+    - userPermissionRepository: UserPermissionRepository
+    - orderStateService: OrderStateService
+    --
+    + auditOrder(adminId: Long, orderId: Long, approved: boolean, comment: String): void
+    + dispatchOrder(adminId: Long, orderId: Long, maintainerId: Long, note: String): DispatchRecord
+    + listPendingOrders(): List<RepairOrder>
+    - checkAuditCondition(orderId: Long): void
+    - validateMaintainer(maintainerId: Long): void
+  }
+  class MaintenanceServiceImpl {
+    - maintenanceRepository: MaintenanceRepository
+    - repairOrderRepository: RepairOrderRepository
+    - orderStateService: OrderStateService
+    --
+    + listTasks(maintainerId: Long): List<RepairOrder>
+    + acceptTask(maintainerId: Long, orderId: Long): void
+    + processRepairOrder(maintainerId: Long, orderId: Long, processDesc: String, repairResult: String, unfinishedReason: String): RepairRecord
+    + continueRepair(maintainerId: Long, orderId: Long): RepairRecord
+    + getRepairHistory(orderId: Long): List<RepairRecord>
+    - validateAssignment(maintainerId: Long, orderId: Long): void
+    - validateRepairState(orderId: Long): void
+    - ensureRecordComplete(processDesc: String, repairResult: String): void
+    - resolveNextState(repairResult: String, unfinishedReason: String): String
+    - saveResult(record: RepairRecord): RepairRecord
+    - handlePersistenceFailure(orderId: Long): void
+  }
+  class AcceptanceServiceImpl {
+    - acceptanceRepository: AcceptanceRepository
+    - evaluationRepository: EvaluationRepository
+    - maintenanceRepository: MaintenanceRepository
+    - repairOrderRepository: RepairOrderRepository
+    - orderStateService: OrderStateService
+    --
+    + acceptRepairResult(reporterId: Long, orderId: Long, passed: boolean, returnReason: String): AcceptanceRecord
+    + requestRework(reporterId: Long, orderId: Long, reason: String): AcceptanceRecord
+    + evaluateService(reporterId: Long, orderId: Long, score: Integer, comment: String): EvaluationRecord
+    + getAcceptanceHistory(orderId: Long): List<AcceptanceRecord>
+    - checkOwner(reporterId: Long, orderId: Long): void
+    - checkAcceptanceState(orderId: Long): void
+    - validateReturnReason(passed: boolean, returnReason: String): void
+    - validateScore(score: Integer): void
+    - persistAcceptance(record: AcceptanceRecord): AcceptanceRecord
+    - persistEvaluation(record: EvaluationRecord): EvaluationRecord
+  }
+  class QueryServiceImpl {
+    - repairOrderRepository: RepairOrderRepository
+    - maintenanceRepository: MaintenanceRepository
+    --
+    + queryOrderProgress(userId: Long, orderId: Long): RepairOrder
+    + queryOrders(userId: Long, status: String, typeId: Long): List<RepairOrder>
+    + queryRepairHistory(orderId: Long): List<RepairRecord>
+    - checkQueryPermission(userId: Long, orderId: Long): void
+    - normalizeStatus(status: String): String
+  }
+  class StatisticsServiceImpl {
+    - repairOrderRepository: RepairOrderRepository
+    - maintenanceRepository: MaintenanceRepository
+    - acceptanceRepository: AcceptanceRepository
+    - evaluationRepository: EvaluationRepository
+    --
+    + countByStatus(): Map<String, Long>
+    + countByType(): Map<String, Long>
+    + countByPeriod(start: LocalDate, end: LocalDate): Map<String, Long>
+    + averageRepairDuration(): Double
+    - normalizePeriod(start: LocalDate, end: LocalDate): void
+    - calculateDuration(start: LocalDateTime, end: LocalDateTime): long
+  }
+  class OrderStateServiceImpl {
+    - repairOrderRepository: RepairOrderRepository
+    - orderStatusRepository: OrderStatusRepository
+    --
+    + submit(orderId: Long, operatorId: Long): void
+    + approve(orderId: Long, operatorId: Long): void
+    + dispatch(orderId: Long, operatorId: Long): void
+    + startRepair(orderId: Long, operatorId: Long): void
+    + finishRepair(orderId: Long, operatorId: Long): void
+    + accept(orderId: Long, operatorId: Long): void
+    + reject(orderId: Long, operatorId: Long, reason: String): void
+    + reopen(orderId: Long, operatorId: Long): void
+    - canTransit(oldStatus: String, newStatus: String): boolean
+    - appendLog(orderId: Long, operatorId: Long, oldStatus: String, newStatus: String, reason: String): void
+  }
+  class LocalFileStorageServiceImpl {
+    - basePath: String
+    --
+    + save(orderId: Long, fileName: String, content: byte[]): String
+    + load(fileUrl: String): byte[]
+    + delete(fileUrl: String): void
+    - validateFile(fileName: String, content: byte[]): void
+    - buildPath(orderId: Long, fileName: String): String
+    - ensureDirectory(orderId: Long): void
+  }
+}
+package "domain / entity" {
+  abstract class AbstractAuditableEntity {
+    # createTime: LocalDateTime
+    # updateTime: LocalDateTime
+    --
+    + touchUpdate(): void
+  }
+  class SysUser {
+    - userId: Long
+    - username: String
+    - passwordHash: String
+    - realName: String
+    - phone: String
+    - status: String
+    --
+    + changeStatus(status: String): void
+    + updateProfile(realName: String, phone: String): void
+    + isEnabled(): boolean
+  }
+  class SysRole {
+    - roleId: Long
+    - roleName: String
+    - roleCode: String
+    - remark: String
+    --
+    + rename(roleName: String): void
+    + changeRemark(remark: String): void
+  }
+  class SysUserRole {
+    - id: Long
+    - userId: Long
+    - roleId: Long
+    - assignTime: LocalDateTime
+    --
+    + matches(userId: Long, roleId: Long): boolean
+  }
+  class RepairOrder {
+    - orderId: Long
+    - reporterId: Long
+    - typeId: Long
+    - locationId: Long
+    - title: String
+    - description: String
+    - status: String
+    --
+    + changeStatus(status: String): void
+    + updateContent(title: String, description: String): void
+    + isOwnedBy(userId: Long): boolean
+    + canOperate(): boolean
+  }
+  class RepairType {
+    - typeId: Long
+    - typeName: String
+    - typeCode: String
+    - description: String
+    - status: String
+    --
+    + enable(): void
+    + disable(): void
+  }
+  class RepairLocation {
+    - locationId: Long
+    - buildingName: String
+    - areaName: String
+    - roomNo: String
+    - description: String
+    - status: String
+    --
+    + enable(): void
+    + disable(): void
+  }
+  class RepairImage {
+    - imageId: Long
+    - orderId: Long
+    - fileUrl: String
+    - fileName: String
+    - uploadTime: LocalDateTime
+    --
+    + getExtension(): String
+  }
+  class DispatchRecord {
+    - dispatchId: Long
+    - orderId: Long
+    - adminId: Long
+    - maintainerId: Long
+    - dispatchTime: LocalDateTime
+    - dispatchNote: String
+    - dispatchStatus: String
+    --
+    + changeStatus(status: String): void
+  }
+  class RepairRecord {
+    - repairId: Long
+    - orderId: Long
+    - maintainerId: Long
+    - startTime: LocalDateTime
+    - endTime: LocalDateTime
+    - processDesc: String
+    - repairResult: String
+    - unfinishedReason: String
+    --
+    + finish(result: String): void
+    + recordUnfinished(reason: String): void
+  }
+  class AcceptanceRecord {
+    - acceptanceId: Long
+    - orderId: Long
+    - reporterId: Long
+    - acceptResult: String
+    - returnReason: String
+    - acceptTime: LocalDateTime
+    --
+    + pass(): void
+    + reject(reason: String): void
+  }
+  class EvaluationRecord {
+    - evaluationId: Long
+    - orderId: Long
+    - reporterId: Long
+    - score: Integer
+    - comment: String
+    - evaluateTime: LocalDateTime
+    --
+    + validateScore(): boolean
+  }
+  class OrderStatusLog {
+    - logId: Long
+    - orderId: Long
+    - operatorId: Long
+    - oldStatus: String
+    - newStatus: String
+    - changeReason: String
+    - changeTime: LocalDateTime
+    --
+    + describeTransition(): String
+  }
+}
+package "repository" {
+  class UserPermissionRepository {
+    + findUserByUsername(username: String): SysUser
+    + findUserById(userId: Long): SysUser
+    + findRolesByUserId(userId: Long): List<SysRole>
+    + saveUser(user: SysUser): void
+    + updateStatus(userId: Long, status: String): void
+    + saveUserRole(userRole: SysUserRole): void
+  }
+  class RepairOrderRepository {
+    + insertOrder(order: RepairOrder): RepairOrder
+    + findById(orderId: Long): RepairOrder
+    + findByReporter(reporterId: Long): List<RepairOrder>
+    + updateOrder(order: RepairOrder): void
+    + findByFilters(status: String, typeId: Long): List<RepairOrder>
+    + saveImage(image: RepairImage): void
+    + findType(typeId: Long): RepairType
+    + findLocation(locationId: Long): RepairLocation
+  }
+  class DispatchRepository {
+    + save(record: DispatchRecord): DispatchRecord
+    + findLatestByOrder(orderId: Long): DispatchRecord
+    + findTasksByMaintainer(maintainerId: Long): List<DispatchRecord>
+    + updateStatus(dispatchId: Long, status: String): void
+  }
+  class MaintenanceRepository {
+    + saveRepairRecord(record: RepairRecord): RepairRecord
+    + findByOrder(orderId: Long): List<RepairRecord>
+    + findLatestByOrder(orderId: Long): RepairRecord
+    + updateRepairRecord(record: RepairRecord): void
+  }
+  class AcceptanceRepository {
+    + saveAcceptance(record: AcceptanceRecord): AcceptanceRecord
+    + findByOrder(orderId: Long): List<AcceptanceRecord>
+    + findLatestByOrder(orderId: Long): AcceptanceRecord
+  }
+  class EvaluationRepository {
+    + saveEvaluation(record: EvaluationRecord): EvaluationRecord
+    + findByOrder(orderId: Long): List<EvaluationRecord>
+    + existsByOrder(orderId: Long): boolean
+  }
+  class OrderStatusRepository {
+    + appendLog(log: OrderStatusLog): void
+    + findByOrder(orderId: Long): List<OrderStatusLog>
+    + findLatest(orderId: Long): OrderStatusLog
+  }
+}
+package "infrastructure" {
+  class JwtTokenProvider {
+    + generateToken(userId: Long, roles: List<String>): String
+    + parseUserId(token: String): Long
+    + parseRoles(token: String): List<String>
+    + validateToken(token: String): boolean
+  }
+}
+AbstractAuditableEntity <|-- SysUser
+AbstractAuditableEntity <|-- RepairOrder
+UserPermissionService <|.. UserPermissionServiceImpl
+RepairOrderService <|.. RepairOrderServiceImpl
+DispatchService <|.. DispatchServiceImpl
+MaintenanceService <|.. MaintenanceServiceImpl
+AcceptanceService <|.. AcceptanceServiceImpl
+QueryService <|.. QueryServiceImpl
+StatisticsService <|.. StatisticsServiceImpl
+OrderStateService <|.. OrderStateServiceImpl
+FileStorageService <|.. LocalFileStorageServiceImpl
+SysUser 1  --  0..*
+SysRole 1  --  0..*
+SysUser 1  --  0..*: reporter
+RepairType 1  --  0..*
+RepairLocation 1  --  0..*
+RepairOrder 1  *--  0..*
+RepairOrder 1  o--  0..*
+RepairOrder 1  o--  0..*
+RepairOrder 1  o--  0..*
+RepairOrder 1  o--  0..*
+RepairOrder 1  *--  0..*
+SysUser 1  --  0..*: admin
+SysUser 1  --  0..*: maintainer
+SysUser 1  --  0..*: maintainer
+SysUser 1  --  0..*: reporter
+SysUser 1  --  0..*: reporter
+SysUser 1  --  0..*: operator
+UserController ..> UserPermissionService
+RepairOrderController ..> RepairOrderService
+DispatchController ..> DispatchService
+MaintenanceController ..> MaintenanceService
+AcceptanceController ..> AcceptanceService
+QueryStatisticsController ..> QueryService
+QueryStatisticsController ..> StatisticsService
+UserPermissionServiceImpl ..> UserPermissionRepository
+UserPermissionServiceImpl ..> JwtTokenProvider
+RepairOrderServiceImpl ..> RepairOrderRepository
+RepairOrderServiceImpl ..> OrderStateService
+RepairOrderServiceImpl ..> FileStorageService
+DispatchServiceImpl ..> DispatchRepository
+DispatchServiceImpl ..> RepairOrderRepository
+DispatchServiceImpl ..> UserPermissionRepository
+DispatchServiceImpl ..> OrderStateService
+MaintenanceServiceImpl ..> MaintenanceRepository
+MaintenanceServiceImpl ..> RepairOrderRepository
+MaintenanceServiceImpl ..> OrderStateService
+AcceptanceServiceImpl ..> AcceptanceRepository
+AcceptanceServiceImpl ..> EvaluationRepository
+AcceptanceServiceImpl ..> MaintenanceRepository
+AcceptanceServiceImpl ..> RepairOrderRepository
+AcceptanceServiceImpl ..> OrderStateService
+QueryServiceImpl ..> RepairOrderRepository
+QueryServiceImpl ..> MaintenanceRepository
+StatisticsServiceImpl ..> RepairOrderRepository
+StatisticsServiceImpl ..> MaintenanceRepository
+StatisticsServiceImpl ..> AcceptanceRepository
+StatisticsServiceImpl ..> EvaluationRepository
+OrderStateServiceImpl ..> RepairOrderRepository
+OrderStateServiceImpl ..> OrderStatusRepository
+UserPermissionRepository ..> SysUser
+UserPermissionRepository ..> SysRole
+UserPermissionRepository ..> SysUserRole
+RepairOrderRepository ..> RepairOrder
+RepairOrderRepository ..> RepairType
+RepairOrderRepository ..> RepairLocation
+RepairOrderRepository ..> RepairImage
+DispatchRepository ..> DispatchRecord
+MaintenanceRepository ..> RepairRecord
+AcceptanceRepository ..> AcceptanceRecord
+EvaluationRepository ..> EvaluationRecord
+OrderStatusRepository ..> OrderStatusLog
+@enduml

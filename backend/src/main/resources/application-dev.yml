@@ -1,0 +1,5 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+# 本地开发请通过 SPRING_DATASOURCE_* 环境变量提供数据库凭据。

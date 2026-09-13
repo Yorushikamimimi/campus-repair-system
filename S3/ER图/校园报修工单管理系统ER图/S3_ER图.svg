@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4200" height="3100" viewBox="0 0 4200 3100">
+  <title>校园报修工单管理系统 E-R 图</title>
+  <defs>
+    <style>
+      .title { font-family: "PingFang SC", "Heiti SC", sans-serif; font-size: 52px; font-weight: 700; fill: #111827; }
+      .subtitle { font-family: "PingFang SC", "Heiti SC", sans-serif; font-size: 24px; fill: #6b7280; }
+      .table { fill: #ffffff; stroke: #243447; stroke-width: 3; }
+      .head { fill: #e8eef7; }
+      .core-head { fill: #dbeafe; }
+      .table-name { font-family: "Menlo", "PingFang SC", sans-serif; font-size: 29px; font-weight: 700; fill: #102a43; }
+      .table-cn { font-family: "PingFang SC", "Heiti SC", sans-serif; font-size: 23px; fill: #334e68; }
+      .field { font-family: "Menlo", "PingFang SC", sans-serif; font-size: 22px; fill: #243b53; }
+      .key { font-family: "Menlo", sans-serif; font-size: 20px; font-weight: 700; fill: #b45309; }
+      .edge { fill: none; stroke: #52606d; stroke-width: 3; }
+      .rel-label { font-family: "Menlo", "PingFang SC", sans-serif; font-size: 21px; font-weight: 700; fill: #334e68; paint-order: stroke; stroke: #ffffff; stroke-width: 7px; }
+      .role { font-family: "PingFang SC", "Heiti SC", sans-serif; font-size: 20px; fill: #7c3aed; paint-order: stroke; stroke: #ffffff; stroke-width: 7px; }
+      .note { font-family: "PingFang SC", "Heiti SC", sans-serif; font-size: 22px; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="4200" height="3100" fill="#ffffff"/>
+  <text x="2100" y="65" text-anchor="middle" class="title">校园报修工单管理系统 E-R 图</text>
+  <text x="2100" y="105" text-anchor="middle" class="subtitle">关系数据库实体、主键/外键及基数关系</text>
+
+  <!-- Relationship lines: each line is one declared 1:N foreign-key relation. -->
+  <!-- user and role relations -->
+  <path class="edge" d="M860 270 L930 270 L930 761 L1000 761"/>
+  <text class="rel-label" x="875" y="250">1</text><text class="rel-label" x="945" y="750">N</text>
+  <text class="role" x="946" y="495">用户角色分配</text>
+  <path class="edge" d="M1700 270 L1840 270 L1840 807 L1760 807"/>
+  <text class="rel-label" x="1710" y="250">1</text><text class="rel-label" x="1770" y="796">N</text>
+  <text class="role" x="1850" y="495">角色分配</text>
+  <text class="note" x="1120" y="1010">sys_user 与 sys_role：通过 sys_user_role 实现 N:M</text>
+
+  <!-- sys_user to repair_order -->
+  <path class="edge" d="M860 330 L930 330 L930 1015 L1400 1015 L1400 1221 L1500 1221"/>
+  <text class="rel-label" x="870" y="310">1</text><text class="rel-label" x="1410" y="1209">N</text>
+  <text class="role" x="965" y="997">报修人</text>
+
+  <!-- type and location to repair_order -->
+  <path class="edge" d="M860 1261 L1500 1261"/>
+  <text class="rel-label" x="870" y="1248">1</text><text class="rel-label" x="1470" y="1248">N</text>
+  <path class="edge" d="M860 1790 L1200 1790 L1200 1359 L1500 1359"/>
+  <text class="rel-label" x="870" y="1777">1</text><text class="rel-label" x="1470" y="1347">N</text>
+
+  <!-- repair_order to right-side records -->
+  <path class="edge" d="M2400 1130 L2520 1130 L2520 281 L2750 281"/>
+  <text class="rel-label" x="2410" y="1117">1</text><text class="rel-label" x="2720" y="268">N</text>
+  <path class="edge" d="M2400 1190 L2580 1190 L2580 831 L2750 831"/>
+  <text class="rel-label" x="2410" y="1177">1</text><text class="rel-label" x="2720" y="818">N</text>
+  <path class="edge" d="M2400 1410 L2750 1410"/>
+  <text class="rel-label" x="2410" y="1397">1</text><text class="rel-label" x="2720" y="1397">N</text>
+  <path class="edge" d="M1900 1612 L1900 1900"/>
+  <text class="rel-label" x="1915" y="1600">1</text><text class="rel-label" x="1915" y="1888">N</text>
+  <path class="edge" d="M2300 1612 L2300 1810 L2450 1810 L2450 2260 L2550 2260"/>
+  <text class="rel-label" x="2315" y="1600">1</text><text class="rel-label" x="2520" y="2248">N</text>
+  <path class="edge" d="M2350 1450 L2480 1450 L2480 2689 L2550 2689"/>
+  <text class="rel-label" x="2360" y="1437">1</text><text class="rel-label" x="2520" y="2677">N</text>
+
+  <!-- sys_user role-specific relations to dispatch/repair/accept/evaluation/status -->
+  <path class="edge" d="M860 370 L900 370 L900 125 L2600 125 L2600 760 L2750 760"/>
+  <text class="rel-label" x="870" y="350">1</text><text class="rel-label" x="2720" y="747">N</text>
+  <text class="role" x="2610" y="740">管理员</text>
+  <path class="edge" d="M860 410 L950 410 L950 550 L2500 550 L2500 820 L2750 820"/>
+  <text class="rel-label" x="870" y="430">1</text><text class="rel-label" x="2720" y="807">N</text>
+  <text class="role" x="2510" y="800">维修人员</text>
+  <path class="edge" d="M860 450 L880 450 L880 2500 L2450 2500 L2450 1390 L2750 1390"/>
+  <text class="rel-label" x="870" y="470">1</text><text class="rel-label" x="2720" y="1377">N</text>
+  <text class="role" x="2460" y="1377">维修人员</text>
+  <path class="edge" d="M860 490 L840 490 L840 1830 L1400 1830 L1400 2041 L1500 2041"/>
+  <text class="rel-label" x="850" y="510">1</text><text class="rel-label" x="1410" y="2029">N</text>
+  <text class="role" x="1060" y="1818">报修人</text>
+  <path class="edge" d="M860 530 L820 530 L820 2480 L2450 2480 L2450 2218 L2550 2218"/>
+  <text class="rel-label" x="830" y="550">1</text><text class="rel-label" x="2520" y="2206">N</text>
+  <text class="role" x="2460" y="2206">报修人</text>
+  <path class="edge" d="M860 570 L800 570 L800 3040 L2450 3040 L2450 2735 L2550 2735"/>
+  <text class="rel-label" x="810" y="590">1</text><text class="rel-label" x="2520" y="2723">N</text>
+  <text class="role" x="2460" y="2723">操作人</text>
+
+  <!-- Tables -->
+  <g>
+    <rect class="table" x="100" y="140" width="760" height="440" rx="3"/><rect class="head" x="100" y="140" width="760" height="72"/>
+    <text class="table-name" x="130" y="182">sys_user</text><text class="table-cn" x="130" y="202">用户表</text>
+    <text class="key" x="130" y="250">PK</text><text class="field" x="190" y="250">user_id</text>
+    <text class="field" x="130" y="296">username</text><text class="field" x="130" y="342">password_hash</text><text class="field" x="130" y="388">real_name</text><text class="field" x="130" y="434">phone</text><text class="field" x="130" y="480">status</text><text class="field" x="130" y="526">create_time</text><text class="field" x="130" y="572">update_time</text>
+  </g>
+  <g>
+    <rect class="table" x="1000" y="140" width="700" height="302" rx="3"/><rect class="head" x="1000" y="140" width="700" height="72"/>
+    <text class="table-name" x="1030" y="182">sys_role</text><text class="table-cn" x="1030" y="202">角色表</text>
+    <text class="key" x="1030" y="250">PK</text><text class="field" x="1090" y="250">role_id</text><text class="field" x="1030" y="296">role_name</text><text class="field" x="1030" y="342">role_code</text><text class="field" x="1030" y="388">remark</text>
+  </g>
+  <g>
+    <rect class="table" x="1000" y="620" width="760" height="302" rx="3"/><rect class="head" x="1000" y="620" width="760" height="72"/>
+    <text class="table-name" x="1030" y="662">sys_user_role</text><text class="table-cn" x="1030" y="682">用户角色关联表</text>
+    <text class="key" x="1030" y="730">PK</text><text class="field" x="1090" y="730">id</text><text class="key" x="1030" y="776">FK</text><text class="field" x="1090" y="776">user_id</text><text class="key" x="1030" y="822">FK</text><text class="field" x="1090" y="822">role_id</text><text class="field" x="1030" y="868">assign_time</text>
+  </g>
+  <g>
+    <rect class="table" x="100" y="1120" width="760" height="394" rx="3"/><rect class="head" x="100" y="1120" width="760" height="72"/>
+    <text class="table-name" x="130" y="1162">repair_type</text><text class="table-cn" x="130" y="1182">报修类型表</text>
+    <text class="key" x="130" y="1230">PK</text><text class="field" x="190" y="1230">type_id</text><text class="field" x="130" y="1276">type_name</text><text class="field" x="130" y="1322">type_code</text><text class="field" x="130" y="1368">description</text><text class="field" x="130" y="1414">status</text>
+  </g>
+  <g>
+    <rect class="table" x="100" y="1650" width="760" height="394" rx="3"/><rect class="head" x="100" y="1650" width="760" height="72"/>
+    <text class="table-name" x="130" y="1692">repair_location</text><text class="table-cn" x="130" y="1712">报修地点表</text>
+    <text class="key" x="130" y="1760">PK</text><text class="field" x="190" y="1760">location_id</text><text class="field" x="130" y="1806">building_name</text><text class="field" x="130" y="1852">area_name</text><text class="field" x="130" y="1898">room_no</text><text class="field" x="130" y="1944">description</text><text class="field" x="130" y="1990">status</text>
+  </g>
+  <g>
+    <rect class="table" x="1500" y="1080" width="900" height="532" rx="3" stroke="#1d4ed8" stroke-width="5"/><rect class="core-head" x="1500" y="1080" width="900" height="72"/>
+    <text class="table-name" x="1530" y="1122">repair_order</text><text class="table-cn" x="1530" y="1142">报修工单表（核心实体）</text>
+    <text class="key" x="1530" y="1190">PK</text><text class="field" x="1590" y="1190">order_id</text><text class="key" x="1530" y="1236">FK</text><text class="field" x="1590" y="1236">reporter_id</text><text class="key" x="1530" y="1282">FK</text><text class="field" x="1590" y="1282">type_id</text><text class="key" x="1530" y="1328">FK</text><text class="field" x="1590" y="1328">location_id</text><text class="field" x="1530" y="1374">title</text><text class="field" x="1530" y="1420">description</text><text class="field" x="1530" y="1466">status</text><text class="field" x="1530" y="1512">submit_time</text><text class="field" x="1530" y="1558">update_time</text>
+  </g>
+  <g>
+    <rect class="table" x="2750" y="140" width="760" height="394" rx="3"/><rect class="head" x="2750" y="140" width="760" height="72"/>
+    <text class="table-name" x="2780" y="182">repair_image</text><text class="table-cn" x="2780" y="202">报修图片表</text>
+    <text class="key" x="2780" y="250">PK</text><text class="field" x="2840" y="250">image_id</text><text class="key" x="2780" y="296">FK</text><text class="field" x="2840" y="296">order_id</text><text class="field" x="2780" y="342">file_url</text><text class="field" x="2780" y="388">file_name</text><text class="field" x="2780" y="434">upload_time</text>
+  </g>
+  <g>
+    <rect class="table" x="2750" y="690" width="760" height="394" rx="3"/><rect class="head" x="2750" y="690" width="760" height="72"/>
+    <text class="table-name" x="2780" y="732">dispatch_record</text><text class="table-cn" x="2780" y="752">派单记录表</text>
+    <text class="key" x="2780" y="800">PK</text><text class="field" x="2840" y="800">dispatch_id</text><text class="key" x="2780" y="846">FK</text><text class="field" x="2840" y="846">order_id</text><text class="key" x="2780" y="892">FK</text><text class="field" x="2840" y="892">admin_id</text><text class="key" x="2780" y="938">FK</text><text class="field" x="2840" y="938">maintainer_id</text><text class="field" x="2780" y="984">dispatch_time</text><text class="field" x="2780" y="1030">dispatch_note</text><text class="field" x="2780" y="1076">dispatch_status</text>
+  </g>
+  <g>
+    <rect class="table" x="2750" y="1250" width="760" height="440" rx="3"/><rect class="head" x="2750" y="1250" width="760" height="72"/>
+    <text class="table-name" x="2780" y="1292">repair_record</text><text class="table-cn" x="2780" y="1312">维修记录表</text>
+    <text class="key" x="2780" y="1360">PK</text><text class="field" x="2840" y="1360">repair_id</text><text class="key" x="2780" y="1406">FK</text><text class="field" x="2840" y="1406">order_id</text><text class="key" x="2780" y="1452">FK</text><text class="field" x="2840" y="1452">maintainer_id</text><text class="field" x="2780" y="1498">start_time</text><text class="field" x="2780" y="1544">end_time</text><text class="field" x="2780" y="1590">process_desc</text><text class="field" x="2780" y="1636">repair_result</text><text class="field" x="2780" y="1682">unfinished_reason</text>
+  </g>
+  <g>
+    <rect class="table" x="1500" y="1900" width="900" height="348" rx="3"/><rect class="head" x="1500" y="1900" width="900" height="72"/>
+    <text class="table-name" x="1530" y="1942">acceptance_record</text><text class="table-cn" x="1530" y="1962">验收返修记录表</text>
+    <text class="key" x="1530" y="2010">PK</text><text class="field" x="1590" y="2010">acceptance_id</text><text class="key" x="1530" y="2056">FK</text><text class="field" x="1590" y="2056">order_id</text><text class="key" x="1530" y="2102">FK</text><text class="field" x="1590" y="2102">reporter_id</text><text class="field" x="1530" y="2148">accept_result</text><text class="field" x="1530" y="2194">return_reason</text><text class="field" x="1530" y="2240">accept_time</text>
+  </g>
+  <g>
+    <rect class="table" x="2550" y="2070" width="760" height="348" rx="3"/><rect class="head" x="2550" y="2070" width="760" height="72"/>
+    <text class="table-name" x="2580" y="2112">evaluation_record</text><text class="table-cn" x="2580" y="2132">评价记录表</text>
+    <text class="key" x="2580" y="2180">PK</text><text class="field" x="2640" y="2180">evaluation_id</text><text class="key" x="2580" y="2226">FK</text><text class="field" x="2640" y="2226">order_id</text><text class="key" x="2580" y="2272">FK</text><text class="field" x="2640" y="2272">reporter_id</text><text class="field" x="2580" y="2318">score</text><text class="field" x="2580" y="2364">comment</text><text class="field" x="2580" y="2410">evaluate_time</text>
+  </g>
+  <g>
+    <rect class="table" x="2550" y="2570" width="760" height="394" rx="3"/><rect class="head" x="2550" y="2570" width="760" height="72"/>
+    <text class="table-name" x="2580" y="2612">order_status_log</text><text class="table-cn" x="2580" y="2632">工单状态流转记录表</text>
+    <text class="key" x="2580" y="2680">PK</text><text class="field" x="2640" y="2680">log_id</text><text class="key" x="2580" y="2726">FK</text><text class="field" x="2640" y="2726">order_id</text><text class="key" x="2580" y="2772">FK</text><text class="field" x="2640" y="2772">operator_id</text><text class="field" x="2580" y="2818">old_status</text><text class="field" x="2580" y="2864">new_status</text><text class="field" x="2580" y="2910">change_reason</text><text class="field" x="2580" y="2956">change_time</text>
+  </g>
+  <text x="2100" y="3060" text-anchor="middle" class="subtitle">PK：主键　FK：外键　1:N：一对多关系；sys_user 与 sys_role 通过 sys_user_role 为多对多关系</text>
+</svg>

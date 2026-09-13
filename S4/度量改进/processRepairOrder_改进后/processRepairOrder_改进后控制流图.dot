@@ -1,0 +1,33 @@
+digraph processRepairOrder_after {
+  graph [rankdir=TB, labelloc=t, label="processRepairOrder() 改进后控制流图 · V(G)=6", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fillcolor="#F8FAFC", fontname="Arial"];
+  edge [fontname="Arial"];
+  N1 [shape=ellipse, label="开始"];
+  N2 [label="读取工单与派单信息"];
+  N3 [shape=diamond, label="身份校验通过？"];
+  N4 [shape=diamond, label="维修状态允许？"];
+  N5 [label="执行检查与维修"];
+  N6 [shape=diamond, label="维修完成？"];
+  N7 [label="记录未完成原因，\n工单状态保持“处理中”"];
+  N8 [shape=diamond, label="维修记录完整？"];
+  N9 [shape=diamond, label="持久化成功？"];
+  N10 [shape=ellipse, label="返回结果并结束"];
+  N11 [label="更新工单状态为“待验收”", fillcolor="#E8F5E9"];
+  N12 [label="回滚本次变更并返回失败结果", fillcolor="#FFEBEE"];
+  N1->N2;
+  N2->N3;
+  N3->N10 [label="否"];
+  N3->N4 [label="是"];
+  N4->N10 [label="否"];
+  N4->N5 [label="是"];
+  N5->N6;
+  N6->N7 [label="否"];
+  N6->N8 [label="是"];
+  N7->N10;
+  N8->N5 [label="否"];
+  N8->N9 [label="是"];
+  N9->N11 [label="是"];
+  N11->N10;
+  N9->N12 [label="否/异常"];
+  N12->N10;
+}

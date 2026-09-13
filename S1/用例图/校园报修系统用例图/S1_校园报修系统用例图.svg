@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3620" height="1700" viewBox="0 0 3620 1700" role="img" aria-labelledby="title desc">
+  <title id="title">校园报修工单管理系统 UML 用例图</title>
+  <desc id="desc">四个参与者、十六个用例、三条泛化、三条扩展、两条包含关系。</desc>
+  <defs>
+    <style>
+      .canvas{fill:#fff}.boundary{fill:#fff;stroke:#1f2937;stroke-width:4}
+      .boundary-title{font:700 40px "Hiragino Sans GB","PingFang SC","Microsoft YaHei",sans-serif;fill:#111827;text-anchor:middle}
+      .usecase{fill:#fff;stroke:#1f2937;stroke-width:3.5}.usecase-text{font:32px "Hiragino Sans GB","PingFang SC","Microsoft YaHei",sans-serif;fill:#111827;text-anchor:middle;dominant-baseline:middle}
+      .actor-line{fill:none;stroke:#111827;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.actor-text{font:32px "Hiragino Sans GB","PingFang SC","Microsoft YaHei",sans-serif;fill:#111827;text-anchor:middle}
+      .association{fill:none;stroke:#4b5563;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+      .generalization{fill:none;stroke:#111827;stroke-width:3.8;stroke-linecap:round;stroke-linejoin:round}.generalization-head{fill:#fff;stroke:#111827;stroke-width:3.8;stroke-linejoin:round}
+      .dependency{fill:none;stroke:#374151;stroke-width:3.2;stroke-dasharray:14 10;stroke-linecap:round}.open-head{fill:none;stroke:#374151;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+      .relation-label{font:25px Arial,sans-serif;fill:#111827;text-anchor:middle}.condition-label{font:24px "Hiragino Sans GB","PingFang SC","Microsoft YaHei",sans-serif;fill:#374151;text-anchor:middle}
+    </style>
+  </defs>
+
+  <rect class="canvas" width="3620" height="1700"/>
+  <rect class="boundary" x="20" y="500" width="3580" height="1100" rx="8"/>
+
+  <!-- 19 条普通关联均独立接入，不存在公共汇聚节点。 -->
+  <g id="associations">
+    <path class="association" d="M 1800 205 L 1800 470 L 1150 470 L 1150 575"/>
+
+    <!-- 报修人：3 条短直线、1 条中央折线、2 条外侧局部线 -->
+    <path class="association" d="M 560 445 L 220 735"/>
+    <path class="association" d="M 540 355 L 40 520 L 40 1120 L 50 1120"/>
+    <path class="association" d="M 600 445 L 600 735"/>
+    <path class="association" d="M 640 445 L 1000 735"/>
+    <path class="association" d="M 620 395 L 800 700 L 780 1075"/>
+    <path class="association" d="M 660 355 Q 1300 500, 1350 1120"/>
+
+    <!-- 管理员：五个用例按扇形排列，全部使用独立直线 -->
+    <path class="association" d="M 2010 445 L 1500 735"/>
+    <path class="association" d="M 2090 445 L 2600 735"/>
+    <path class="association" d="M 1990 355 L 1700 1055"/>
+    <path class="association" d="M 2110 355 L 2400 1055"/>
+    <path class="association" d="M 2050 395 L 2050 1355"/>
+
+    <!-- 维修人员：顶部两条直线，底部两条沿各自外侧通道 -->
+    <path class="association" d="M 3160 445 L 2950 735"/>
+    <path class="association" d="M 3240 445 L 3400 735"/>
+    <path class="association" d="M 3140 355 L 2750 520 L 2750 950 L 2950 1155"/>
+    <path class="association" d="M 3260 355 L 3570 520 L 3570 950 L 3400 1155"/>
+  </g>
+
+  <!-- 三条泛化线仅位于顶部参与者区域，空心三角均指向系统用户。 -->
+  <g id="generalizations">
+    <path class="generalization" d="M 600 282 L 1710 115"/>
+    <path class="generalization" d="M 2050 282 L 1865 226"/>
+    <path class="generalization" d="M 3200 282 L 1890 115"/>
+    <path class="generalization-head" d="M 1710 99 L 1740 115 L 1710 131 Z"/>
+    <path class="generalization-head" d="M 1875 211 L 1840 205 L 1862 234 Z"/>
+    <path class="generalization-head" d="M 1890 99 L 1860 115 L 1890 131 Z"/>
+  </g>
+
+  <!-- 用例间关系：严格 3 条 extend、2 条 include。 -->
+  <g id="dependencies">
+    <path class="dependency extend" d="M 220 1075 L 220 845"/>
+    <path class="open-head" d="M 207 845 L 220 825 L 233 845"/>
+    <text class="relation-label" x="330" y="950">«extend»</text>
+
+    <path class="dependency extend" d="M 820 1078 L 965 837"/>
+    <path class="open-head" d="M 948 844 L 976 825 L 972 858"/>
+    <text class="relation-label" x="955" y="965">«extend»</text>
+    <text class="condition-label" x="1015" y="1000">[验收不通过]</text>
+
+    <path class="dependency extend" d="M 1150 1075 L 1070 842"/>
+    <path class="open-head" d="M 1058 854 L 1065 825 L 1084 848"/>
+    <text class="relation-label" x="1210" y="935">«extend»</text>
+    <text class="condition-label" x="1290" y="970">[验收通过后选择评价]</text>
+
+    <path class="dependency include" d="M 3230 780 L 3120 780"/>
+    <path class="open-head" d="M 3140 768 L 3120 780 L 3140 792"/>
+    <text class="relation-label" x="3175" y="750">«include»</text>
+
+    <path class="dependency include" d="M 3120 1200 L 3230 1200"/>
+    <path class="open-head" d="M 3210 1188 L 3230 1200 L 3210 1212"/>
+    <text class="relation-label" x="3175" y="1170">«include»</text>
+  </g>
+
+  <!-- 标题在连线之上，白底标签保证无文字遮挡。 -->
+  <rect x="1450" y="512" width="700" height="58" fill="#ffffff"/>
+  <text class="boundary-title" x="1800" y="554">校园报修工单管理系统</text>
+
+  <!-- 恰好 16 个用例，全部位于系统边界内。 -->
+  <g id="usecases">
+    <g data-usecase="登录系统"><ellipse class="usecase" cx="1150" cy="620" rx="170" ry="45"/><text class="usecase-text" x="1150" y="620">登录系统</text></g>
+
+    <g data-usecase="提交报修申请"><ellipse class="usecase" cx="220" cy="780" rx="170" ry="45"/><text class="usecase-text" x="220" y="780">提交报修申请</text></g>
+    <g data-usecase="上传故障图片"><ellipse class="usecase" cx="220" cy="1120" rx="170" ry="45"/><text class="usecase-text" x="220" y="1120">上传故障图片</text></g>
+    <g data-usecase="查询报修进度"><ellipse class="usecase" cx="600" cy="780" rx="170" ry="45"/><text class="usecase-text" x="600" y="780">查询报修进度</text></g>
+    <g data-usecase="验收维修结果"><ellipse class="usecase" cx="1000" cy="780" rx="170" ry="45"/><text class="usecase-text" x="1000" y="780">验收维修结果</text></g>
+    <g data-usecase="提交返修申请"><ellipse class="usecase" cx="780" cy="1120" rx="170" ry="45"/><text class="usecase-text" x="780" y="1120">提交返修申请</text></g>
+    <g data-usecase="评价维修服务"><ellipse class="usecase" cx="1180" cy="1120" rx="170" ry="45"/><text class="usecase-text" x="1180" y="1120">评价维修服务</text></g>
+
+    <g data-usecase="审核报修申请"><ellipse class="usecase" cx="1500" cy="780" rx="170" ry="45"/><text class="usecase-text" x="1500" y="780">审核报修申请</text></g>
+    <g data-usecase="分配维修工单"><ellipse class="usecase" cx="2600" cy="780" rx="170" ry="45"/><text class="usecase-text" x="2600" y="780">分配维修工单</text></g>
+    <g data-usecase="管理用户"><ellipse class="usecase" cx="1700" cy="1100" rx="170" ry="45"/><text class="usecase-text" x="1700" y="1100">管理用户</text></g>
+    <g data-usecase="管理维修人员"><ellipse class="usecase" cx="2400" cy="1100" rx="170" ry="45"/><text class="usecase-text" x="2400" y="1100">管理维修人员</text></g>
+    <g data-usecase="查看统计信息"><ellipse class="usecase" cx="2050" cy="1400" rx="170" ry="45"/><text class="usecase-text" x="2050" y="1400">查看统计信息</text></g>
+
+    <g data-usecase="查看维修任务"><ellipse class="usecase" cx="2950" cy="780" rx="170" ry="45"/><text class="usecase-text" x="2950" y="780">查看维修任务</text></g>
+    <g data-usecase="接收维修任务"><ellipse class="usecase" cx="3400" cy="780" rx="170" ry="45"/><text class="usecase-text" x="3400" y="780">接收维修任务</text></g>
+    <g data-usecase="处理维修工单"><ellipse class="usecase" cx="2950" cy="1200" rx="170" ry="45"/><text class="usecase-text" x="2950" y="1200">处理维修工单</text></g>
+    <g data-usecase="填写维修记录"><ellipse class="usecase" cx="3400" cy="1200" rx="170" ry="45"/><text class="usecase-text" x="3400" y="1200">填写维修记录</text></g>
+  </g>
+
+  <!-- 恰好 4 个参与者，全部位于系统边界外。 -->
+  <g id="actors">
+    <g class="actor" data-actor="系统用户"><circle class="actor-line" cx="1800" cy="70" r="28"/><path class="actor-line" d="M 1800 98 L 1800 155 M 1740 115 L 1860 115 M 1800 155 L 1760 205 M 1800 155 L 1840 205"/><text class="actor-text" x="1800" y="28">系统用户</text></g>
+    <g class="actor" data-actor="报修人"><circle class="actor-line" cx="600" cy="310" r="28"/><path class="actor-line" d="M 600 338 L 600 395 M 540 355 L 660 355 M 600 395 L 560 445 M 600 395 L 640 445"/><text class="actor-text" x="600" y="482">报修人</text></g>
+    <g class="actor" data-actor="管理员"><circle class="actor-line" cx="2050" cy="310" r="28"/><path class="actor-line" d="M 2050 338 L 2050 395 M 1990 355 L 2110 355 M 2050 395 L 2010 445 M 2050 395 L 2090 445"/><text class="actor-text" x="2050" y="482">管理员</text></g>
+    <g class="actor" data-actor="维修人员"><circle class="actor-line" cx="3200" cy="310" r="28"/><path class="actor-line" d="M 3200 338 L 3200 395 M 3140 355 L 3260 355 M 3200 395 L 3160 445 M 3200 395 L 3240 445"/><text class="actor-text" x="3200" y="482">维修人员</text></g>
+  </g>
+</svg>

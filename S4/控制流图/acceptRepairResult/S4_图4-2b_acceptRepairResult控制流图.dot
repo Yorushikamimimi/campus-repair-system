@@ -1,0 +1,65 @@
+digraph acceptRepairResult {
+    graph [
+        charset="UTF-8",
+        rankdir=TB,
+        labelloc=t,
+        label="AcceptanceServiceImpl.acceptRepairResult() 控制流图",
+        fontname="Hiragino Sans GB",
+        fontsize=20,
+        pad=0.25,
+        nodesep=0.55,
+        ranksep=0.65,
+        splines=polyline,
+        outputorder=edgesfirst,
+        bgcolor="white"
+    ];
+
+    node [
+        fontname="Hiragino Sans GB",
+        fontsize=12,
+        margin="0.16,0.10",
+        color="#263238",
+        penwidth=1.5,
+        style="filled",
+        fillcolor="#F8FAFC"
+    ];
+    edge [
+        fontname="Hiragino Sans GB",
+        fontsize=11,
+        color="#455A64",
+        penwidth=1.25,
+        arrowsize=0.75
+    ];
+
+    N1  [shape=ellipse, fillcolor="#E8F5E9", label="N1\n开始"];
+    N2  [shape=box, label="N2\n读取验收信息与工单数据\n（报修人、工单、维修记录）"];
+    N3  [shape=diamond, fillcolor="#FFF3E0", label="N3\n工单是否存在？"];
+    N4  [shape=diamond, fillcolor="#FFF3E0", label="N4\n工单状态是否为“待验收”\n且当前用户为报修人本人？"];
+    N5  [shape=diamond, fillcolor="#FFF3E0", label="N5\n本次验收是否通过？"];
+    N6  [shape=box, label="N6\n将工单状态更新为“已完成”，\n并进入服务评价阶段"];
+    N7  [shape=diamond, fillcolor="#FFF3E0", label="N7\n返修原因是否填写\n且内容有效？"];
+    N8  [shape=box, label="N8\n记录返修原因，\n将工单状态更新为“待返修”"];
+    N9  [shape=box, label="N9\n保存验收记录与工单状态变更"];
+    N10 [shape=diamond, fillcolor="#FFF3E0", label="N10\n保存操作是否成功？"];
+    N11 [shape=box, fillcolor="#FFEBEE", label="N11\n回滚本次变更并返回失败信息"];
+    N12 [shape=box, label="N12\n返回验收处理结果"];
+    N13 [shape=ellipse, fillcolor="#E8F5E9", label="N13\n结束"];
+
+    N1  -> N2;
+    N2  -> N3;
+    N3  -> N4  [label="是"];
+    N3  -> N11 [label="否"];
+    N4  -> N5  [label="是"];
+    N4  -> N11 [label="否"];
+    N5  -> N6  [label="是"];
+    N5  -> N7  [label="否"];
+    N6  -> N9;
+    N7  -> N8  [label="是"];
+    N7  -> N11 [label="否"];
+    N8  -> N9;
+    N9  -> N10;
+    N10 -> N12 [label="是"];
+    N10 -> N11 [label="否"];
+    N11 -> N12;
+    N12 -> N13;
+}

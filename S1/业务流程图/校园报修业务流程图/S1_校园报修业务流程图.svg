@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="4200" viewBox="0 0 2400 4200">
+  <defs>
+    <marker id="arrow" markerWidth="22" markerHeight="22" refX="20" refY="11" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 22 11 L 0 22 z" fill="#2d3740"/>
+    </marker>
+    <style>
+      .title { font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size: 64px; font-weight: 600; fill: #1d252c; text-anchor: middle; }
+      .lane-title { font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size: 44px; font-weight: 600; fill: #1d252c; text-anchor: middle; dominant-baseline: middle; }
+      .node-text { font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size: 40px; font-weight: 400; fill: #1d252c; text-anchor: middle; dominant-baseline: middle; }
+      .decision-text { font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size: 36px; font-weight: 500; fill: #1d252c; text-anchor: middle; dominant-baseline: middle; }
+      .branch-text { font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size: 38px; font-weight: 600; fill: #1d252c; text-anchor: middle; dominant-baseline: middle; }
+      .lane-border { stroke: #66727c; stroke-width: 3; fill: #ffffff; }
+      .lane-divider { stroke: #8a949c; stroke-width: 3; }
+      .header { fill: #eef1f3; stroke: #66727c; stroke-width: 3; }
+      .activity { fill: #ffffff; stroke: #34414a; stroke-width: 4; rx: 16; ry: 16; }
+      .terminal { fill: #ffffff; stroke: #26323a; stroke-width: 5; rx: 45; ry: 45; }
+      .decision { fill: #f6f7f8; stroke: #26323a; stroke-width: 4; }
+      .flow { fill: none; stroke: #2d3740; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; marker-end: url(#arrow); }
+      .label-bg { fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="2400" height="4200" fill="#ffffff"/>
+  <text class="title" x="1200" y="88">校园报修业务流程图</text>
+
+  <!-- 三个纵向泳道 -->
+  <rect class="lane-border" x="100" y="140" width="2200" height="3960"/>
+  <rect class="header" x="100" y="140" width="733" height="130"/>
+  <rect class="header" x="833" y="140" width="733" height="130"/>
+  <rect class="header" x="1566" y="140" width="734" height="130"/>
+  <line class="lane-divider" x1="833" y1="270" x2="833" y2="4100"/>
+  <line class="lane-divider" x1="1566" y1="270" x2="1566" y2="4100"/>
+  <text class="lane-title" x="467" y="205">报修人</text>
+  <text class="lane-title" x="1200" y="205">管理员</text>
+  <text class="lane-title" x="1933" y="205">维修人员</text>
+
+  <!-- 报修人：发起报修 -->
+  <rect class="terminal" x="337" y="320" width="260" height="90"/>
+  <text class="node-text" x="467" y="365">开始</text>
+  <path class="flow" marker-end="url(#arrow)" d="M 467 410 L 467 486"/>
+
+  <rect class="activity" x="267" y="500" width="400" height="105"/>
+  <text class="node-text" x="467" y="553">发现设施故障</text>
+  <path class="flow" d="M 467 605 L 467 666"/>
+
+  <rect class="activity" x="187" y="680" width="560" height="135"/>
+  <text class="node-text" x="467" y="724">确认故障地点、故障类型</text>
+  <text class="node-text" x="467" y="775">和故障现象</text>
+  <path class="flow" d="M 467 815 L 467 881"/>
+
+  <rect class="activity" x="267" y="895" width="400" height="110"/>
+  <text class="node-text" x="467" y="950">提交报修申请</text>
+  <path class="flow" d="M 467 1005 L 467 1050 L 1200 1050 L 1200 1086"/>
+
+  <!-- 管理员：审核 -->
+  <rect class="activity" x="1000" y="1100" width="400" height="110"/>
+  <text class="node-text" x="1200" y="1155">审核报修信息</text>
+  <path class="flow" d="M 1200 1210 L 1200 1216"/>
+
+  <polygon class="decision" points="1200,1230 1420,1350 1200,1470 980,1350"/>
+  <text class="decision-text" x="1200" y="1326">报修信息是否</text>
+  <text class="decision-text" x="1200" y="1374">完整、有效？</text>
+
+  <!-- 审核否：退回、补充、重提、再审核 -->
+  <path class="flow" d="M 980 1350 L 930 1350 L 930 1515 L 990 1515 L 990 1556"/>
+  <rect class="label-bg" x="912" y="1302" width="56" height="48"/>
+  <text class="branch-text" x="940" y="1326">否</text>
+
+  <rect class="activity" x="850" y="1570" width="280" height="125"/>
+  <text class="node-text" x="990" y="1608">退回补充</text>
+  <text class="node-text" x="990" y="1658">或修改</text>
+  <path class="flow" d="M 990 1695 L 990 1755 L 467 1755 L 467 1796"/>
+
+  <rect class="activity" x="267" y="1810" width="400" height="110"/>
+  <text class="node-text" x="467" y="1865">补充报修信息</text>
+  <path class="flow" d="M 467 1920 L 467 1996"/>
+
+  <rect class="activity" x="247" y="2010" width="440" height="110"/>
+  <text class="node-text" x="467" y="2065">重新提交报修申请</text>
+  <path class="flow" d="M 247 2065 L 65 2065 L 65 1155 L 986 1155"/>
+
+  <!-- 审核是：派单 -->
+  <path class="flow" d="M 1200 1470 L 1200 1515 L 1340 1515 L 1340 1546"/>
+  <rect class="label-bg" x="1210" y="1473" width="56" height="48"/>
+  <text class="branch-text" x="1238" y="1497">是</text>
+
+  <rect class="activity" x="1160" y="1560" width="360" height="140"/>
+  <text class="node-text" x="1340" y="1588">根据故障类型</text>
+  <text class="node-text" x="1340" y="1632">和维修范围</text>
+  <text class="node-text" x="1340" y="1676">进行派单</text>
+  <path class="flow" d="M 1340 1700 L 1340 1760 L 1933 1760 L 1933 1796"/>
+
+  <!-- 维修人员：接单与维修 -->
+  <rect class="activity" x="1733" y="1810" width="400" height="110"/>
+  <text class="node-text" x="1933" y="1865">接收维修任务</text>
+  <path class="flow" d="M 1933 1920 L 1933 1996"/>
+
+  <rect class="activity" x="1683" y="2010" width="500" height="125"/>
+  <text class="node-text" x="1933" y="2073">现场检查并维修</text>
+  <path class="flow" d="M 1933 2135 L 1933 2236"/>
+
+  <polygon class="decision" points="1933,2250 2160,2370 1933,2490 1706,2370"/>
+  <text class="decision-text" x="1933" y="2370">维修是否完成？</text>
+
+  <!-- 维修否：记录原因后继续维修 -->
+  <path class="flow" d="M 2160 2370 L 2215 2370 L 2215 2570 L 2115 2570 L 2115 2606"/>
+  <rect class="label-bg" x="2162" y="2321" width="56" height="48"/>
+  <text class="branch-text" x="2190" y="2345">否</text>
+
+  <rect class="activity" x="1965" y="2620" width="300" height="145"/>
+  <text class="node-text" x="2115" y="2645" font-size="36">记录未完成原因</text>
+  <text class="node-text" x="2115" y="2693">并安排</text>
+  <text class="node-text" x="2115" y="2741">后续处理</text>
+  <path class="flow" d="M 2265 2693 L 2340 2693 L 2340 2045 L 2197 2045"/>
+
+  <!-- 维修是：记录结果并验收 -->
+  <path class="flow" d="M 1933 2490 L 1933 2555 L 1750 2555 L 1750 2606"/>
+  <rect class="label-bg" x="1830" y="2514" width="56" height="48"/>
+  <text class="branch-text" x="1858" y="2538">是</text>
+
+  <rect class="activity" x="1585" y="2620" width="330" height="145"/>
+  <text class="node-text" x="1750" y="2667">记录维修过程</text>
+  <text class="node-text" x="1750" y="2717">和处理结果</text>
+  <path class="flow" d="M 1750 2765 L 1750 2810 L 467 2810 L 467 2846"/>
+
+  <rect class="activity" x="267" y="2860" width="400" height="110"/>
+  <text class="node-text" x="467" y="2915">验收维修结果</text>
+  <path class="flow" d="M 467 2970 L 467 3096"/>
+
+  <polygon class="decision" points="467,3110 687,3230 467,3350 247,3230"/>
+  <text class="decision-text" x="467" y="3230">验收是否通过？</text>
+
+  <!-- 验收否：提出返修并重新维修 -->
+  <path class="flow" d="M 687 3230 L 760 3230 L 760 3385 L 680 3385 L 680 3421"/>
+  <rect class="label-bg" x="700" y="3181" width="56" height="48"/>
+  <text class="branch-text" x="728" y="3205">否</text>
+
+  <rect class="activity" x="560" y="3435" width="240" height="120"/>
+  <text class="node-text" x="680" y="3470">提出返修</text>
+  <text class="node-text" x="680" y="3520">要求</text>
+  <path class="flow" d="M 680 3555 L 680 3665 L 1933 3665 L 1933 3716"/>
+
+  <rect class="activity" x="1760" y="3730" width="346" height="110"/>
+  <text class="node-text" x="1933" y="3785">进行返修</text>
+  <path class="flow" d="M 2106 3785 L 2285 3785 L 2285 2100 L 2197 2100"/>
+
+  <!-- 验收是：可选评价 -->
+  <path class="flow" d="M 467 3350 L 467 3375 L 330 3375 L 330 3386"/>
+  <rect class="label-bg" x="390" y="3348" width="56" height="48"/>
+  <text class="branch-text" x="418" y="3372">是</text>
+
+  <polygon class="decision" points="330,3400 500,3510 330,3620 160,3510"/>
+  <text class="decision-text" x="330" y="3510">是否评价？</text>
+
+  <path class="flow" d="M 330 3620 L 330 3675 L 350 3675 L 350 3716"/>
+  <rect class="label-bg" x="335" y="3634" width="56" height="48"/>
+  <text class="branch-text" x="363" y="3658">是</text>
+
+  <rect class="activity" x="200" y="3730" width="300" height="110"/>
+  <text class="node-text" x="350" y="3785">评价本次维修</text>
+  <path class="flow" d="M 350 3840 L 350 3920 L 467 3920 L 467 3976"/>
+
+  <path class="flow" d="M 160 3510 L 80 3510 L 80 4035 L 323 4035"/>
+  <rect class="label-bg" x="82" y="3461" width="56" height="48"/>
+  <text class="branch-text" x="110" y="3485">否</text>
+
+  <rect class="terminal" x="337" y="3990" width="260" height="90"/>
+  <text class="node-text" x="467" y="4035">业务结束</text>
+</svg>

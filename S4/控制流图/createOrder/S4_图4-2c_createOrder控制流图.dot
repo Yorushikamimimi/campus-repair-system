@@ -1,0 +1,62 @@
+digraph createOrder {
+    graph [
+        charset="UTF-8",
+        rankdir=TB,
+        labelloc=t,
+        label="RepairOrderServiceImpl.createOrder() 控制流图",
+        fontname="Hiragino Sans GB",
+        fontsize=20,
+        pad=0.25,
+        nodesep=0.55,
+        ranksep=0.65,
+        splines=polyline,
+        outputorder=edgesfirst,
+        bgcolor="white"
+    ];
+
+    node [
+        fontname="Hiragino Sans GB",
+        fontsize=12,
+        margin="0.16,0.10",
+        color="#263238",
+        penwidth=1.5,
+        style="filled",
+        fillcolor="#F8FAFC"
+    ];
+    edge [
+        fontname="Hiragino Sans GB",
+        fontsize=11,
+        color="#455A64",
+        penwidth=1.25,
+        arrowsize=0.75
+    ];
+
+    N1  [shape=ellipse, fillcolor="#E8F5E9", label="N1\n开始"];
+    N2  [shape=box, label="N2\n接收报修信息并整理输入\n（报修人、类型、地点、标题、描述、图片）"];
+    N3  [shape=diamond, fillcolor="#FFF3E0", label="N3\n报修人身份是否有效\n（已登录且具备报修权限）？"];
+    N4  [shape=diamond, fillcolor="#FFF3E0", label="N4\n报修类型、报修地点\n等输入是否合法？"];
+    N5  [shape=diamond, fillcolor="#FFF3E0", label="N5\n是否上传报修图片？"];
+    N6  [shape=box, label="N6\n校验并暂存报修图片文件"];
+    N7  [shape=box, label="N7\n创建工单实体，\n生成工单编号并初始化状态为“待审核”"];
+    N8  [shape=box, label="N8\n持久化保存工单，\n并绑定已上传的报修图片"];
+    N9  [shape=diamond, fillcolor="#FFF3E0", label="N9\n工单保存是否成功？"];
+    N10 [shape=box, fillcolor="#FFEBEE", label="N10\n回滚本次创建并返回失败信息"];
+    N11 [shape=box, label="N11\n返回创建结果（工单编号与初始状态）"];
+    N12 [shape=ellipse, fillcolor="#E8F5E9", label="N12\n结束"];
+
+    N1  -> N2;
+    N2  -> N3;
+    N3  -> N4  [label="是"];
+    N3  -> N10 [label="否"];
+    N4  -> N5  [label="是"];
+    N4  -> N10 [label="否"];
+    N5  -> N6  [label="是"];
+    N5  -> N7  [label="否"];
+    N6  -> N7;
+    N7  -> N8;
+    N8  -> N9;
+    N9  -> N11 [label="是"];
+    N9  -> N10 [label="否"];
+    N10 -> N11;
+    N11 -> N12;
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="4200" height="2600" viewBox="0 0 4200 2600">
+  <defs>
+    <marker id="call-arrow" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#2f4655"/>
+    </marker>
+    <style>
+      .title { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:60px; font-weight:600; fill:#172b38; text-anchor:middle; dominant-baseline:middle; }
+      .module { fill:#f3f7fa; stroke:#2f4655; stroke-width:4; }
+      .module-text { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:36px; font-weight:500; fill:#172b38; text-anchor:middle; dominant-baseline:middle; }
+      .module-text.top { font-size:40px; font-weight:600; }
+      .call { fill:none; stroke:#2f4655; stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; marker-end:url(#call-arrow); }
+      .bridge { fill:none; stroke:#fff; stroke-width:13; stroke-linecap:round; stroke-linejoin:round; }
+      .note { font-family:'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif; font-size:30px; font-weight:400; fill:#526672; text-anchor:middle; dominant-baseline:middle; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="4200" height="2600" fill="#fff"/>
+  <text class="title" x="2100" y="82">校园报修工单管理系统模块耦合图</text>
+
+  <!-- 顶层 M1 到第二层：6 条直接调用关系 -->
+  <path id="e01" class="call" data-source="M1" data-target="M2" d="M1580 390 C1340 485 650 505 400 636"/>
+  <path id="e02" class="call" data-source="M1" data-target="M3" d="M1780 390 C1650 480 1250 520 1050 636"/>
+  <path id="e03" class="call" data-source="M1" data-target="M4" d="M1980 390 C1920 480 1820 530 1750 636"/>
+  <path id="e04" class="call" data-source="M1" data-target="M5" d="M2220 390 C2260 480 2370 530 2400 636"/>
+  <path id="e05" class="call" data-source="M1" data-target="M6" d="M2420 390 C2560 480 2920 520 3100 636"/>
+  <path id="e06" class="call" data-source="M1" data-target="M7" d="M2620 390 C2880 485 3550 510 3800 636"/>
+
+  <!-- M2 -->
+  <path id="e07" class="call" data-source="M2" data-target="M11" d="M400 840 V1900 H700 V2036"/>
+
+  <!-- M3 -->
+  <path id="e08" class="call" data-source="M3" data-target="M8" d="M1150 840 V1245 H1786"/>
+  <path id="e09" class="call" data-source="M3" data-target="M9" d="M1300 840 V1650 H2150 V2036"/>
+  <path id="e10" class="call" data-source="M3" data-target="M12" d="M900 840 V1600 H1500 V2036"/>
+
+  <!-- M4 -->
+  <path id="e11" class="call" data-source="M4" data-target="M8" d="M1900 840 V1186"/>
+  <path id="e12" class="call" data-source="M4" data-target="M9" d="M1450 840 V1750 H2300 V2036"/>
+  <path class="bridge" d="M1700 840 V1750 H950 V2036"/>
+  <path id="e13" class="call" data-source="M4" data-target="M11" d="M1700 840 V1750 H950 V2036"/>
+
+  <!-- M5 -->
+  <path id="e14" class="call" data-source="M5" data-target="M8" d="M2200 840 V1000 H2300 V1186"/>
+  <path id="e15" class="call" data-source="M5" data-target="M9" d="M2600 840 V1700 H2450 V2036"/>
+  <path class="bridge" d="M2680 840 V1850 H3300 V2036"/>
+  <path id="e16" class="call" data-source="M5" data-target="M10" d="M2680 840 V1850 H3300 V2036"/>
+
+  <!-- M6 -->
+  <path id="e17" class="call" data-source="M6" data-target="M8" d="M2850 840 V1300 H2514"/>
+  <path id="e18" class="call" data-source="M6" data-target="M9" d="M3050 840 V1800 H2600 V2036"/>
+  <path id="e19" class="call" data-source="M6" data-target="M10" d="M3250 840 V1750 H3550 V2036"/>
+
+  <!-- M7 -->
+  <path class="bridge" d="M3900 840 H4120 V2350 H2750 V2254"/>
+  <path id="e20" class="call" data-source="M7" data-target="M9" d="M3900 840 H4120 V2350 H2750 V2254"/>
+  <path id="e21" class="call" data-source="M7" data-target="M10" d="M3750 840 V2036"/>
+
+  <!-- 公共状态模块 -->
+  <path id="e22" class="call" data-source="M8" data-target="M9" d="M2400 1390 V1880 H2850 V2036"/>
+
+  <!-- 12 个模块 -->
+  <rect class="module" x="1500" y="200" width="1200" height="190"/>
+  <text class="module-text top" x="2100" y="295">M1 Web接入模块</text>
+
+  <rect class="module" x="100" y="650" width="600" height="190"/>
+  <text class="module-text" x="400" y="745">M2 用户与权限模块</text>
+
+  <rect class="module" x="750" y="650" width="600" height="190"/>
+  <text class="module-text" x="1050" y="745">M3 报修申请模块</text>
+
+  <rect class="module" x="1425" y="650" width="600" height="190"/>
+  <text class="module-text" x="1725" y="745">M4 审核派单模块</text>
+
+  <rect class="module" x="2100" y="650" width="600" height="190"/>
+  <text class="module-text" x="2400" y="745">M5 维修处理模块</text>
+
+  <rect class="module" x="2775" y="650" width="650" height="190"/>
+  <text class="module-text" x="3100" y="745">M6 验收返修与评价模块</text>
+
+  <rect class="module" x="3500" y="650" width="600" height="190"/>
+  <text class="module-text" x="3800" y="745">M7 查询统计模块</text>
+
+  <rect class="module" x="1800" y="1200" width="700" height="190"/>
+  <text class="module-text" x="2150" y="1295">M8 工单状态流转模块</text>
+
+  <rect class="module" x="400" y="2050" width="750" height="190"/>
+  <text class="module-text" x="775" y="2145">M11 用户权限数据访问模块</text>
+
+  <rect class="module" x="1250" y="2050" width="750" height="190"/>
+  <text class="module-text" x="1625" y="2145">M12 文件存储模块</text>
+
+  <rect class="module" x="2050" y="2050" width="850" height="190"/>
+  <text class="module-text" x="2475" y="2145">M9 工单数据访问模块</text>
+
+  <rect class="module" x="3100" y="2050" width="900" height="190"/>
+  <text class="module-text" x="3550" y="2145">M10 维修验收数据访问模块</text>
+
+  <text class="note" x="2100" y="2510">实线箭头表示模块之间的直接调用关系</text>
+</svg>
