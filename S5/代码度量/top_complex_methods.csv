@@ -1,0 +1,11 @@
+rank,class_name,method_name,file_path,start_line,cyclomatic_complexity
+1,MaintenanceServiceImpl,listTasks,backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java,48,11
+2,LocalFileStorageServiceImpl,validateFile,backend/src/main/java/com/campusrepair/storage/LocalFileStorageServiceImpl.java,63,10
+3,UserPermissionServiceImpl,login,backend/src/main/java/com/campusrepair/service/impl/UserPermissionServiceImpl.java,32,9
+4,MaintenanceServiceImpl,ensureRecordComplete,backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java,180,8
+5,RepairOrderServiceImpl,validateCreate,backend/src/main/java/com/campusrepair/service/impl/RepairOrderServiceImpl.java,111,7
+6,StatisticsServiceImpl,averageRepairDuration,backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java,91,7
+7,CurrentUser,requireId,backend/src/main/java/com/campusrepair/security/CurrentUser.java,12,6
+8,QueryServiceImpl,normalizeStatus,backend/src/main/java/com/campusrepair/service/impl/QueryServiceImpl.java,51,6
+9,RepairOrderServiceImpl,saveImages,backend/src/main/java/com/campusrepair/service/impl/RepairOrderServiceImpl.java,125,6
+10,StatisticsServiceImpl,countByStatus,backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java,43,6

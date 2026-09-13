@@ -1,0 +1,7 @@
+metric,covered,missed,coverage_percent
+instruction,2945,1707,63.31
+branch,234,230,50.43
+line,705,308,69.60
+complexity,240,284,45.80
+method,183,109,62.67
+class,50,18,73.53

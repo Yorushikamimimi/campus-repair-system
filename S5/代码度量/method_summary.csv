@@ -1,0 +1,7 @@
+category,method_count
+Controller,33
+Service interface,41
+ServiceImpl,81
+Repository,39
+Domain,27
+Other,36

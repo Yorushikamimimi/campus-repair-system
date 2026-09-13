@@ -1,0 +1,16 @@
+metric,s4_design,s5_actual,difference,interpretation
+class_interface_count,50,77,27,按实际顶层 Java 类型统计
+WMC_max,11,17,6,S5 按普通方法和系统类型引用重新计算
+RFC_max,18,64,46,S5 按普通方法和系统类型引用重新计算
+DIT_max,1,1,0,S5 按普通方法和系统类型引用重新计算
+NOC_max,2,2,0,S5 按普通方法和系统类型引用重新计算
+CBO_max,8,14,6,S5 按普通方法和系统类型引用重新计算
+LCOM_max,9,100,91,S5 按普通方法和系统类型引用重新计算
+WMC_avg,3.76,3.34,-0.42,S5 按实际源码重新计算
+RFC_avg,5.14,9.69,4.55,S5 按实际源码重新计算
+CBO_avg,2.56,2.47,-0.09,S5 按实际源码重新计算
+LCOM_avg,0.3,4.45,4.15,S5 按实际源码重新计算
+processRepairOrder_VG,6,3,-3,S5 单方法方法体口径
+acceptRepairResult_VG,6,2,-4,S5 单方法方法体口径
+createOrder_VG,5,5,0,S5 单方法方法体口径
+evaluateService_VG,not in S4 core list,4,NA,实现阶段新增评价服务的实际复杂度
