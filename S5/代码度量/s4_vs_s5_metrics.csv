@@ -1,5 +1,5 @@
 metric,s4_design,s5_actual,difference,interpretation
-class_interface_count,50,77,27,按实际顶层 Java 类型统计
+class_interface_count,50,75,25,按实际 class 54 + interface 21 统计；enum 2 个单独说明，Java 顶层类型总数为 77
 WMC_max,11,17,6,S5 按普通方法和系统类型引用重新计算
 RFC_max,18,64,46,S5 按普通方法和系统类型引用重新计算
 DIT_max,1,1,0,S5 按普通方法和系统类型引用重新计算
