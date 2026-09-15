@@ -61,13 +61,29 @@ public class LocalFileStorageServiceImpl implements FileStorageService {
     }
 
     private void validateFile(Long orderId, String fileName, byte[] content) {
+        validateOrderId(orderId);
+        validateFilename(fileName);
+        validateContent(content);
+        validateExtension(fileName);
+    }
+
+    private void validateOrderId(Long orderId) {
         if (orderId == null || orderId <= 0) throw new BusinessException(ErrorCode.BAD_REQUEST, "工单ID不合法");
+    }
+
+    private void validateFilename(String fileName) {
         if (fileName == null || fileName.isBlank()) throw new BusinessException(ErrorCode.BAD_REQUEST, "图片文件名不能为空");
         Path path = Path.of(fileName);
         if (!path.getFileName().toString().equals(fileName) || fileName.contains("\\")) {
             throw new BusinessException(ErrorCode.BAD_REQUEST, "图片文件名不合法");
         }
+    }
+
+    private void validateContent(byte[] content) {
         if (content == null || content.length == 0) throw new BusinessException(ErrorCode.BAD_REQUEST, "不能上传空图片");
+    }
+
+    private void validateExtension(String fileName) {
         if (!ALLOWED_EXTENSIONS.contains(extensionOf(fileName))) {
             throw new BusinessException(ErrorCode.BAD_REQUEST, "仅支持JPG、PNG、GIF或WEBP图片");
         }
