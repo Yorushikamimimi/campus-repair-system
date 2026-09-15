@@ -50,9 +50,16 @@ public class QueryServiceImpl implements QueryService {
 
     private String normalizeStatus(String status) {
         if (status == null || status.isBlank()) return "";
-        String value = status.trim();
+        return normalizeStatusValue(status.trim());
+    }
+
+    private String normalizeStatusValue(String value) {
         OrderStatus code = OrderStatus.fromCode(value);
         if (code != null) return code.code();
+        return displayNameToCode(value);
+    }
+
+    private String displayNameToCode(String value) {
         for (OrderStatus item : OrderStatus.values()) {
             if (item.displayName().equals(value)) return item.code();
         }
