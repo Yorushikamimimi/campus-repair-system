@@ -1,0 +1,42 @@
+diff --git a/backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java b/backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java
+index dd75d4c..c6177c9 100644
+--- a/backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java
++++ b/backend/src/main/java/com/campusrepair/service/impl/StatisticsServiceImpl.java
+@@ -92,15 +92,28 @@ public class StatisticsServiceImpl implements StatisticsService {
+         List<RepairRecord> completed = maintenanceRepository.findCompletedRecords();
+         if (completed.isEmpty()) return 0.0;
+ 
+-        long totalMinutes = 0;
+-        int count = 0;
+-        for (RepairRecord record : completed) {
+-            if (record.getStartTime() == null || record.getEndTime() == null) continue;
+-            if (record.getEndTime().isBefore(record.getStartTime())) continue;
+-            totalMinutes += Duration.between(record.getStartTime(), record.getEndTime()).toMinutes();
+-            count++;
+-        }
+-        if (count == 0) return 0.0;
++        List<RepairRecord> validRecords = completed.stream()
++                .filter(this::isValidDurationRecord)
++                .toList();
++        if (validRecords.isEmpty()) return 0.0;
++
++        long totalMinutes = validRecords.stream()
++                .mapToLong(this::calculateDurationMinutes)
++                .sum();
++        return roundedAverage(totalMinutes, validRecords.size());
++    }
++
++    private boolean isValidDurationRecord(RepairRecord record) {
++        return record.getStartTime() != null
++                && record.getEndTime() != null
++                && !record.getEndTime().isBefore(record.getStartTime());
++    }
++
++    private long calculateDurationMinutes(RepairRecord record) {
++        return Duration.between(record.getStartTime(), record.getEndTime()).toMinutes();
++    }
++
++    private double roundedAverage(long totalMinutes, int count) {
+         return BigDecimal.valueOf(((double) totalMinutes) / count)
+                 .setScale(2, RoundingMode.HALF_UP)
+                 .doubleValue();

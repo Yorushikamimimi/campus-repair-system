@@ -1,0 +1,13 @@
+SourceMonitor模板指标,Understand实际指标,改进前值,获取方式,是否直接对应,备注
+Lines,CountLine / Lines,3183,Project Home + projectmetrics.dat,YES,完整分析范围的物理行数
+Statements,CountStmtExe / Executable Statements,788,Project Home + projectmetrics.dat,NO,统一采用的替代口径；它最接近流程与行为语句且不混入声明
+% Branches,NOT_DIRECT,N/A,Understand最终项目与方法指标,NO,没有发现与SourceMonitor分支语句比例完全等价的直接指标
+% Comments,RatioCommentToCode / Comment to Code Ratio,0.00,Project Home + projectmetrics.dat,YES,Understand直接值；Comment Lines=7且Code Lines=2719
+Classes,CountDeclClass / Classes,79,Project Home + projectmetrics.dat,YES,77个顶层类型加2个命名嵌套类
+Methods per Class,CountDeclFunction / CountDeclClass,3.81,计算：301 / 79,NO,同一Understand实体口径下计算
+Functions,CountDeclFunction / Functions,301,Project Home + projectmetrics.dat,YES,包含普通方法之外的构造方法和lambda等函数实体
+Avg Stmts/Method,CountStmtExe / CountDeclFunction,2.62,计算：788 / 301,NO,与Statements统一使用可执行语句口径
+Max Complexity,Cyclomatic,6,Low Maintainability Functions + method_metrics.csv,YES,最终高复杂度候选集的最大值
+Avg Complexity,Cyclomatic,4.76,计算：method_metrics.csv中17个候选的算术平均,NO,候选范围为Cyclomatic>=4且CountLine>=1且MaxNesting>=1；不是全项目301个函数的平均值
+Max Depth,MaxNesting,3,Low Maintainability Functions + method_metrics.csv,YES,最终高复杂度候选集的最大值
+Avg Depth,MaxNesting,1.53,计算：method_metrics.csv中17个候选的算术平均,NO,与复杂度使用相同17个候选；不是全项目301个函数的平均值

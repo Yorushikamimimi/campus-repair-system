@@ -1,0 +1,16 @@
+diff --git a/backend/src/main/java/com/campusrepair/security/CurrentUser.java b/backend/src/main/java/com/campusrepair/security/CurrentUser.java
+index b93bdb4..d1339af 100644
+--- a/backend/src/main/java/com/campusrepair/security/CurrentUser.java
++++ b/backend/src/main/java/com/campusrepair/security/CurrentUser.java
+@@ -13,7 +13,10 @@ public final class CurrentUser {
+         if (authentication == null || !authentication.isAuthenticated()) {
+             throw new BusinessException(ErrorCode.UNAUTHORIZED);
+         }
+-        Object principal = authentication.getPrincipal();
++        return principalToUserId(authentication.getPrincipal());
++    }
++
++    private static Long principalToUserId(Object principal) {
+         try {
+             if (principal instanceof Number number) return number.longValue();
+             String username = principal instanceof UserDetails details

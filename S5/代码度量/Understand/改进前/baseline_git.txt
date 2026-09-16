@@ -1,0 +1,15 @@
+记录时间：2026-09-15（Asia/Shanghai）
+工作目录：/Users/yang/Workspace/school/软件度量大作业
+
+$ git branch --show-current
+feature/s5-metrics
+
+$ git rev-parse HEAD
+80a524e75e415f8762e3d50cc64cee8fe8edec2e
+
+$ git status --short --branch
+## feature/s5-metrics
+?? S5/docs/
+?? S6/
+
+说明：以上状态记录于本轮 Understand 证据目录创建前；S5/docs/ 与 S6/ 为既有未跟踪内容，本轮不处理。

@@ -1,0 +1,8 @@
+Name,CountDeclMethod,CountClassCoupled,PercentLackOfCohesion
+com.campusrepair.security.CurrentUser,3,8,0
+com.campusrepair.service.impl.QueryServiceImpl,8,13,63
+com.campusrepair.service.impl.MaintenanceServiceImpl,21,31,83
+com.campusrepair.service.impl.StatisticsServiceImpl,8,32,67
+com.campusrepair.storage.LocalFileStorageServiceImpl,11,14,73
+com.campusrepair.service.impl.RepairOrderServiceImpl,11,29,76
+com.campusrepair.service.impl.DispatchServiceImpl,13,24,80

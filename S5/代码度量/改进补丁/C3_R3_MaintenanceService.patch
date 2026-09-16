@@ -1,0 +1,40 @@
+diff --git a/backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java b/backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java
+index 9e51b7d..8fecc3b 100644
+--- a/backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java
++++ b/backend/src/main/java/com/campusrepair/service/impl/MaintenanceServiceImpl.java
+@@ -178,16 +178,28 @@ public class MaintenanceServiceImpl implements MaintenanceService {
+     }
+ 
+     private void ensureRecordComplete(MaintenanceProcessRequest request, boolean finished) {
+-        String processDesc = normalizeText(request.getProcessDesc());
+-        if (processDesc == null || processDesc.isBlank()) {
++        validateProcessDescription(request.getProcessDesc());
++        if (finished) {
++            validateCompletedRecord(request);
++        } else {
++            validateProcessingRecord(request);
++        }
++    }
++
++    private void validateProcessDescription(String processDesc) {
++        String normalized = normalizeText(processDesc);
++        if (normalized == null || normalized.isBlank()) {
+             throw new BusinessException(ErrorCode.BAD_REQUEST, "维修过程不能为空");
+         }
+-        if (finished) {
+-            if (normalizeText(request.getRepairResult()) == null) {
+-                throw new BusinessException(ErrorCode.BAD_REQUEST, "维修结果不能为空");
+-            }
+-            return;
++    }
++
++    private void validateCompletedRecord(MaintenanceProcessRequest request) {
++        if (normalizeText(request.getRepairResult()) == null) {
++            throw new BusinessException(ErrorCode.BAD_REQUEST, "维修结果不能为空");
+         }
++    }
++
++    private void validateProcessingRecord(MaintenanceProcessRequest request) {
+         if (normalizeText(request.getUnfinishedReason()) == null) {
+             throw new BusinessException(ErrorCode.BAD_REQUEST, "未完成原因不能为空");
+         }

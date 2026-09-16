@@ -1,0 +1,14 @@
+Name,CountDeclMethod,CountClassCoupled,PercentLackOfCohesion
+com.campusrepair.controller.AcceptanceController,7,23,50
+com.campusrepair.common.ApiResponse,2,3,100
+com.campusrepair.service.impl.DispatchServiceImpl,13,24,80
+com.campusrepair.common.GlobalExceptionHandler,9,27,0
+com.campusrepair.security.JwtAuthenticationFilter,2,23,0
+com.campusrepair.security.JwtTokenProvider,8,20,69
+com.campusrepair.dto.LoginRequest,1,3,100
+com.campusrepair.service.impl.MaintenanceServiceImpl,18,31,81
+com.campusrepair.dto.MaintenanceTaskItem,1,4,100
+com.campusrepair.controller.RepairOrderController,6,21,0
+com.campusrepair.service.impl.RepairOrderServiceImpl,11,29,76
+com.campusrepair.service.impl.StatisticsServiceImpl,5,31,47
+com.campusrepair.dto.TypeCountItem,1,3,100
